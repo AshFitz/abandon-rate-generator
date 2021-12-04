@@ -19,7 +19,25 @@ def get_call_data():
     """
     print("Enter the number of inbound calls received.\n")
 
-    data_str = input("Enter your data here: ")
-    print(f"The figuers you entered are {data_str}")
+    data_request = input("Enter your data here: ")
+
+    call_data = data_request.split(",")
+    validate_data(call_data)
+
+
+def validate_data(values):
+    """
+    Converts string values into integers.
+    Raises ValueError if strings cannot be coverted into int,
+    or if there is more than one value.
+    """
+    try:
+        if len(values) != 1:
+            raise ValueError(
+                f"Only 1 value is required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+
 
 get_call_data()
