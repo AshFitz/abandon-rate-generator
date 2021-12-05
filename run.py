@@ -17,12 +17,20 @@ def get_call_data():
     """
     Get call figures input from the user
     """
-    print("Enter the number of inbound calls received.\n")
 
-    data_request = input("Enter your data here: ")
+    while True:   
+        print("Enter the number of inbound calls received.\n")
 
-    call_data = data_request.split(",")
-    validate_data(call_data)
+        data_request = input("Enter your data here: ")
+
+        call_data = data_request.split(",")
+        
+
+        if validate_data(call_data):
+            print("Data is valid!")
+            break
+
+    return call_data
 
 
 def validate_data(values):
@@ -32,12 +40,16 @@ def validate_data(values):
     or if there is more than one value.
     """
     try:
+        [int(value) for value in values]
         if len(values) != 1:
             raise ValueError(
                 f"Only 1 value is required, you provided {len(values)}"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
 
 
-get_call_data()
+data = get_call_data()
