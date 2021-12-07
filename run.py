@@ -22,7 +22,6 @@ def get_rep_name():
     via the terminal, which must contain only alpha numeric values. The loop will
     repeatedly request data until the data is valid.
     """
-    clear_terminal()
     num = None
     print("We need the representative's name.\n")
 
@@ -31,10 +30,10 @@ def get_rep_name():
         if input_value.isalpha():
             num = input_value
             
-            print("Thank you for your name \n")
+            print("Thank you for your name.\n")
             get_dept_name()
         else:
-            print("Sorry you have entered {input}, please enter text only.".format(input=input_value))
+            print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
 
 #string input only
@@ -45,65 +44,73 @@ def get_dept_name():
     via the terminal, which must contain only alpha numeric values. The loop will
     repeatedly request data until the data is valid.
     """
-    clear_terminal()
-    print("Now we need your department name. \n")
-    while True:
-        dep_name_input = input("Please enter the name of your department: ").lower().strip()
-
-        if dep_name_input.isalpha():
-            print("Thank you for your department name \n")
-
-        else: 
-            print("Sorry you have entered {input}, please enter text only.".format(input=dep_name_input))  
+    num = None
+    print("Now we need your department name.\n")
+    
+    while num is None:
+        input_value = input("Please enter your department name here: ").lower().strip()
+        if input_value.isalpha():
+            num = input_value
+            
+            print("Thank you for your letting us know your department.\n")
+            get_inbound_calls()
+        else:
+            print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
 
 
 #num
 def get_inbound_calls():
     """
-    Get call figures input from the user.
+    Get inbound call figures input from the user.
     Run a while loop to collect a valid string of data from the user
     via the terminal, which must be a string with 1 number. The loop
     will repeatedly request data until the data is valid.
     """
+    print("Next we need you to enter the number of inbound calls received.\n")
 
     while True: 
-        print("Enter the number of inbound calls received.\n")
-
         try:
-
-            inbound_input = int(input("Enter your data here: "))
+            inbound_input = int(input("Please enter the inbound calls here: "))
+            inbound_calls = inbound_input
+            all_input_data.append(inbound_input)
 
         except ValueError:
             print(f"You have entered characters, please ensure it is only numbers")
             continue
         else:
-            print("that all worked ok")
-            break   
+            print("Yayy customers.")
+            get_dropped_calls()
+        
 
 
 #num
 def get_dropped_calls():
     """
-    Description needed
+    Get dropped call figures input from the user.
+    Run a while loop to collect a valid string of data from the user
+    via the terminal, which must be a string with 1 number. The loop
+    will repeatedly request data until the data is valid.
     """ 
+    print("Enter the number of dropped calls.\n")
 
-# def update_call_worksheet(data):
-#     """
-#     Update call worksheet, add the call data provided.
-#     """
+    while True: 
+        try:
 
-#     print("Updating call worksheet....\n")
-#     call_worksheet = SHEET.worksheet("call_data")
-#     call_worksheet.append_column(data)
-#     print("Call worksheet updated successfully.\n")
+            dropped_input = int(input("Enter your data here: "))
+            dropped_calls = dropped_input
+            all_input_data.append(dropped_input)
 
-
-# data = all_input_data
+        except ValueError:
+            print(f"You have entered characters, please ensure it is only numbers")
+            continue
+        else:
+            print("Its sad to miss customer calls....But you are nearly there!")
+          
 
 def clear_terminal():
     os.system('clear')
 
-
 all_input_data = []
 get_rep_name()
+
