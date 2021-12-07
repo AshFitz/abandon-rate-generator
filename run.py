@@ -14,7 +14,47 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('call_data')
 
 
-#string input only
+def start_generator():
+    print("""
+    -----------------------------------------
+    ******** Aboandon Rate Generator ********
+    -----------------------------------------
+    """)
+    print(r"""\
+              _              _
+             | |------------| |
+          .-'| |            | |`-.
+        .'   | |            | |   `.
+     .-'      \ \          / /      `-.
+   .'        _.| |--------| |._        `.
+  /    -.  .'  | |        | |  `.  .-    \
+ /       `(    | |________| |    )'       \
+|          \  .i------------i.  /          |
+|        .-')/                \(`-.        |
+\    _.-'.-'/     ________     \`-.`-._    /
+ \.-'_.-'  /   .-' ______ `-.   \  `-._`-./\
+  `-'     /  .' .-' _   _`-. `.  \     `-' \\
+         | .' .' _ (3) (2) _`. `. |        //
+        / /  /  (4)  ___  (1)_\  \ \       \\
+        | | |  _   ,'   `.==' `| | |       //
+        | | | (5)  | A.F | (O) | | |      //
+        | | |   _  `.___.' _   | | |      \\
+        | \  \ (6)  _   _ (9) /  / |      //
+        /  `. `.   (7) (8)  .' .'  \      \\
+       /     `. `-.______.-' .'     \     //
+      /        `-.________.-'        \ __//
+     |                                |--'
+     |================================|
+     "--------------------------------"
+    """)
+
+
+
+# def description():
+
+
+
+
 def get_rep_name():
     """
     Get the representative's name from the user.
@@ -36,7 +76,7 @@ def get_rep_name():
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
 
-#string input only
+
 def get_dept_name():
     """
     Get the department name from the user.
@@ -59,7 +99,7 @@ def get_dept_name():
 
 
 
-#num
+
 def get_inbound_calls():
     """
     Get inbound call figures input from the user.
@@ -84,7 +124,6 @@ def get_inbound_calls():
         
 
 
-#num
 def get_dropped_calls():
     """
     Get dropped call figures input from the user.
@@ -108,9 +147,11 @@ def get_dropped_calls():
             print("Its sad to miss customer calls....But you are nearly there!")
           
 
-def clear_terminal():
-    os.system('clear')
 
-all_input_data = []
-get_rep_name()
+# def calculate_abandon_rate():
 
+# def clear_terminal():
+#     os.system('clear')
+
+# all_input_data = []
+start_generator()
