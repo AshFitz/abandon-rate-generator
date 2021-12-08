@@ -138,9 +138,14 @@ def get_inbound_calls():
     while True: 
         try:
             inbound_input = int(input("Please enter the inbound calls here: "))
-            inbound_calls = inbound_input
-            all_input_data.append(inbound_input)
-
+            global inbound_calls
+            
+            if inbound_calls == None:
+                inbound_calls = inbound_input
+            else:
+                inbound_calls = None
+            #all_input_data.append(inbound_input)
+            
         except ValueError:
             print(f"You have entered characters, please ensure it is only numbers")
             continue
@@ -161,11 +166,16 @@ def get_dropped_calls():
 
     while True: 
         try:
-
             dropped_input = int(input("Enter your data here: "))
-            dropped_calls = dropped_input
-            all_input_data.append(dropped_input)
-
+            global dropped_calls 
+            
+            if dropped_calls == None: 
+                dropped_calls = dropped_input
+            else: 
+                inbound_calls = None   
+            #all_input_data.append(dropped_input)
+            
+            calculate_abandon_rate()
         except ValueError:
             print(f"You have entered characters, please ensure it is only numbers")
             continue
@@ -174,10 +184,26 @@ def get_dropped_calls():
           
 
 
-# def calculate_abandon_rate():
+def calculate_abandon_rate():
+    """
+    Calculate the abandon rate by dividing the dropped number
+    of calls by the total number of inbound calls and multiplying the result by 100.
+    Implement the format method which returns the devided calls as a string with 
+    only 1 floating point number.
+    """
+    divided_calls = (dropped_calls / inbound_calls) * 100
+    percentage = '{:.1f}'.format(divided_calls)
+    print(f"{percentage}%")
+
+    return
+
 
 # def clear_terminal():
 #     os.system('clear')
 
 # all_input_data = []
+
+inbound_calls = None
+dropped_calls = None
+
 start_generator()
