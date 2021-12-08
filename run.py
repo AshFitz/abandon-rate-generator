@@ -75,12 +75,35 @@ def description():
 
 
 def abandon_rate_options():
+    """
+    Provide the user with two options. One option to generate the abandon rate
+    by inputting recent call data or the other option to view recent abandon
+    rates generated. Run a while loop to to check the users input. If True, the try
+    block runs and the selected option is executed. If False handle the exception.
 
-    # print("Do you want to generate your abandon rate?\n")
+    """
+    print("Enter '1' to generate the abandon rate? \n")
 
-    # print("Or\n")
+    print("Or\n")
 
-    # print("Do you want to view your previous abandon rate?")
+    print("Enter '2' view previous abandon rates? \n")
+
+    option_value =''
+    while option_value not in [1, 2]:
+        try:
+            option_value = int(input("Choose your option: "))
+            if option_value == 1:
+                get_rep_name()
+            elif option_value == 2:
+                print("this will be the get call")
+            else:
+                print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
+                print("Please select option '1' or '2'")
+                continue
+        
+        except ValueError:
+            print("Sorry you have entered an invalid input, please select from option '1' or '2'")
+
 
 
 
