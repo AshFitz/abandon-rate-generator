@@ -20,7 +20,7 @@ def start_generator():
     ******** Aboandon Rate Generator ********
     -----------------------------------------
     """)
-    print(r"""\
+    print(r"""
               _              _
              | |------------| |
           .-'| |            | |`-.
@@ -47,11 +47,37 @@ def start_generator():
      |================================|
      "--------------------------------"
     """)
+    description()
 
 
 
-# def description():
+def description():
+    """
+    Describe the generator functionality. Explain the meaning of abandon rate.
+    """
+    print(
+    """
+    The Abandon Rate Generator can be used track how a call center is performing.\n
+    """)
 
+    print(
+    """
+    The abandon rate is the percentage of customers that abandon their call before speaking to a call center representative.
+    This is calculated by dividing the number of abandonded call by the total number of calls received.\n
+    """)
+    print(
+    """
+    Here is an example: If a call center receives 1000 calls and 50 of those calls are abandoned,
+    the abandon rate is 5%.\n
+    """)
+
+    get_rep_name()
+
+    # print("Do you want to generate your abandon rate?\n")
+
+    # print("Or\n")
+
+    # print("Do you want to view your previous abandon rate?")
 
 
 
