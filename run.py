@@ -17,7 +17,7 @@ SHEET = GSPREAD_CLIENT.open('call_data')
 def start_generator():
     print("""
     -----------------------------------------
-    ******** Aboandon Rate Generator ********
+    ******** Abandon Rate Generator ********
     -----------------------------------------
     """)
     print(r"""
@@ -71,7 +71,10 @@ def description():
     the abandon rate is 5%.\n
     """)
 
-    get_rep_name()
+    abandon_rate_options()
+
+
+def abandon_rate_options():
 
     # print("Do you want to generate your abandon rate?\n")
 
@@ -97,10 +100,30 @@ def get_rep_name():
             num = input_value
             
             print("Thank you for your name.\n")
-            get_dept_name()
+            get_job_title()
         else:
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
+
+def get_job_title():
+    """
+    Get the uses job title.
+    Run a while loop to collect a valid string of data from the user
+    via the terminal, which must contain only alpha numeric values. The loop will
+    repeatedly request data until the data is valid.
+    """
+    num = None
+    print("We also need your job title.\n")
+    
+    while num is None:
+        input_value = input("Please enter your job title here: ").lower().strip()
+        if input_value.isalpha():
+            num = input_value
+            
+            print("Thank you for letting us know your job title.\n")
+            get_dept_name()
+        else:
+            print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
 
 def get_dept_name():
@@ -118,7 +141,7 @@ def get_dept_name():
         if input_value.isalpha():
             num = input_value
             
-            print("Thank you for your letting us know your department.\n")
+            print("Thank you for letting us know your department.\n")
             get_inbound_calls()
         else:
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
