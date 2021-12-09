@@ -1,5 +1,6 @@
 import gspread
 import os
+import datetime
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 
@@ -117,6 +118,7 @@ def get_rep_name():
     num = None
     print("We need the representative's name.\n")
 
+    get_date()
     while num is None:
         input_value = input("Please enter your name here: ").lower().strip()
         if all(x.isalpha() or x.isspace() for x in input_value):
@@ -124,7 +126,6 @@ def get_rep_name():
             all_input_data.append(input_value)
             
             print("Thank you for your name.\n")
-            print(all_input_data, "This is the append")
             get_job_title()
         else:
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
@@ -291,6 +292,12 @@ def get_call_sheet():
         except ValueError:
             print("Sorry you have entered an invalid input, please select from option '1' or '2'")
 
+def get_date():
+    date = datetime.date.today()
+    all_input_data.append(str(date))
+    print(date)
+    
+
 
 
 def main():
@@ -305,5 +312,5 @@ all_input_data = []
 inbound_calls = None
 dropped_calls = None
 
-# start_generator()
-get_call_sheet()
+start_generator()
+# get_call_sheet()
