@@ -119,10 +119,12 @@ def get_rep_name():
 
     while num is None:
         input_value = input("Please enter your name here: ").lower().strip()
-        if input_value.isalpha():
+        if all(x.isalpha() or x.isspace() for x in input_value):
             num = input_value
+            all_input_data.append(input_value)
             
             print("Thank you for your name.\n")
+            print(all_input_data, "This is the append")
             get_job_title()
         else:
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
@@ -140,8 +142,9 @@ def get_job_title():
     
     while num is None:
         input_value = input("Please enter your job title here: ").lower().strip()
-        if input_value.isalpha():
+        if all(x.isalpha() or x.isspace() for x in input_value):
             num = input_value
+            all_input_data.append(input_value)
             
             print("Thank you for letting us know your job title.\n")
             get_dept_name()
@@ -161,8 +164,9 @@ def get_dept_name():
     
     while num is None:
         input_value = input("Please enter your department name here: ").lower().strip()
-        if input_value.isalpha():
+        if all(x.isalpha() or x.isspace() for x in input_value):
             num = input_value
+            all_input_data.append(input_value)
             
             print("Thank you for letting us know your department.\n")
             get_inbound_calls()
@@ -188,9 +192,10 @@ def get_inbound_calls():
             
             if inbound_calls == None:
                 inbound_calls = inbound_input
+                all_input_data.append(inbound_calls)
+
             else:
                 inbound_calls = None
-            #all_input_data.append(inbound_input)
             
         except ValueError:
             print(f"You have entered characters, please ensure it is only numbers")
@@ -217,16 +222,17 @@ def get_dropped_calls():
             
             if dropped_calls == None: 
                 dropped_calls = dropped_input
+                all_input_data.append(dropped_calls)
+
             else: 
                 inbound_calls = None   
-            #all_input_data.append(dropped_input)
             
-            calculate_abandon_rate()
         except ValueError:
             print(f"You have entered characters, please ensure it is only numbers")
             continue
         else:
             print("Its sad to miss customer calls....But you are nearly there!")
+            calculate_abandon_rate()
           
 
 
@@ -240,14 +246,28 @@ def calculate_abandon_rate():
     divided_calls = (dropped_calls / inbound_calls) * 100
     percentage = '{:.1f}'.format(divided_calls)
     print(f"{percentage}%")
+    all_input_data.append(percentage)
 
-    return
+    update_call_worksheet(all_input_data)
+
+
+def update_call_worksheet(data):
+    """
+    Update call worksheet, add new row with the list data provided.
+    """
+
+    print("Updating sales worksheet.....\n")
+    call_worksheet = SHEET.worksheet("call_data")
+    call_worksheet.append_row(data)
+    print("Call worksheet updated successfully.\n")
+
+
 
 
 # def clear_terminal():
 #     os.system('clear')
 
-# all_input_data = []
+all_input_data = []
 
 inbound_calls = None
 dropped_calls = None
