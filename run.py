@@ -1,6 +1,7 @@
 import gspread
 import os
 from google.oauth2.service_account import Credentials
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -96,6 +97,7 @@ def abandon_rate_options():
                 get_rep_name()
             elif option_value == 2:
                 print("this will be the get call")
+                get_call_sheet()
             else:
                 print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
                 print("Please select option '1' or '2'")
@@ -103,8 +105,6 @@ def abandon_rate_options():
         
         except ValueError:
             print("Sorry you have entered an invalid input, please select from option '1' or '2'")
-
-
 
 
 def get_rep_name():
@@ -246,7 +246,7 @@ def calculate_abandon_rate():
     divided_calls = (dropped_calls / inbound_calls) * 100
     percentage = '{:.1f}'.format(divided_calls)
     print(f"{percentage}%")
-    all_input_data.append(percentage)
+    all_input_data.append(percentage +"%")
 
     update_call_worksheet(all_input_data)
 
@@ -264,6 +264,39 @@ def update_call_worksheet(data):
 
 
 
+def get_call_sheet():
+    print("Enter '1' to view all of the previous abandon rate submissions? \n")
+    print("Or")
+    print("Enter '2' to view the most recent abandon rate submission? \n")
+
+
+    selected_option =''
+    while selected_option not in [1, 2]:
+        try:
+            selected_option = int(input("Choose your option: "))
+            if selected_option == 1:
+                get_all_data = SHEET.worksheet("call_data").get_all_values()
+                pprint(get_all_data)
+                # start_generator()
+            elif selected_option == 2:
+                get_most_recent_data = SHEET.worksheet("call_data").get_all_values()
+                last_row = get_most_recent_data[-1]
+                pprint(last_row)
+                # start_generator()
+            else:
+                print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
+                print("Please select option '1' or '2'")
+                continue
+        
+        except ValueError:
+            print("Sorry you have entered an invalid input, please select from option '1' or '2'")
+
+
+
+def main():
+    """
+    Update!!!
+    """
 # def clear_terminal():
 #     os.system('clear')
 
@@ -272,4 +305,5 @@ all_input_data = []
 inbound_calls = None
 dropped_calls = None
 
-start_generator()
+# start_generator()
+get_call_sheet()
