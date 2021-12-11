@@ -102,10 +102,9 @@ class Generator:
         via the terminal, which must contain only alpha numeric values. The loop will
         repeatedly request data until the data is valid.
         """
-        num = None
         print("Firstly, we need your name.\n")
-
-        get_date()
+        self.get_date()
+        
         while num is None:
             input_value = input("Please enter your name here: ").lower().strip()
             if all(x.isalpha() or x.isspace() for x in input_value):
