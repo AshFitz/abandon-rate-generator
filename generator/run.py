@@ -128,13 +128,10 @@ class Generator:
         
         while True:
             text_input = input("Please enter your job title here: ").lower().strip()
-
-
-            if all(x.isalpha() or x.isspace() for x in text_input):
-                self.all_input_data.append(text_input)
-                
+            if(validate_text(text_input)):
                 print("Thank you for letting us know your job title.\n")
-                get_dept_name()
+                self.all_input_data.append(text_input)
+                self.get_dept_name()
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
