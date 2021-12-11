@@ -104,15 +104,14 @@ class Generator:
         """
         print("Firstly, we need your name.\n")
         self.get_date()
-        
-        while num is None:
-            input_value = input("Please enter your name here: ").lower().strip()
-            if all(x.isalpha() or x.isspace() for x in input_value):
-                num = input_value
-                all_input_data.append(input_value)
-                
-                print("Thank you!.\n")
-                get_job_title()
+
+        while True:
+            text_input = input("Please enter your name here: ").lower().strip()
+            if (validate_text(text_input)):
+                print("Thank you for your name.\n")
+                self.all_input_data.append(text_input)
+                print(self.all_input_data)
+                self.get_job_title()
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
