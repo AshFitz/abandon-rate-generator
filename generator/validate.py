@@ -96,11 +96,11 @@ class Generator:
         via the terminal, which must contain only alpha numeric values. The loop will
         repeatedly request data until the data is valid.
         """
-        print("Firstly, we need your name.\n")
+        print("Please provide us with your name.\n")
         self.get_date()
 
         while True:
-            text_input = input("Please enter your name here:\n").lower().strip()
+            text_input = input("Enter your name here:\n").lower().strip()
             if (validate_text(text_input)):
                 print("Thank you for your name.\n")
                 self.all_input_data.append(text_input)
@@ -116,10 +116,10 @@ class Generator:
         via the terminal, which must contain only alpha numeric values. The loop will
         repeatedly request data until the data is valid.
         """
-        print("We also need your job title.\n")
+        print("Please provide us with your job title.\n")
         
         while True:
-            text_input = input("Please enter your job title here:\n").lower().strip()
+            text_input = input("Enter your job title here:\n").lower().strip()
             if(validate_text(text_input)):
                 print("Thank you for letting us know your job title.\n")
                 self.all_input_data.append(text_input)
@@ -134,9 +134,9 @@ class Generator:
         via the terminal, which must contain only alpha numeric values. The loop will
         repeatedly request data until the data is valid.
         """
-        print("Now we need your department name.\n")
+        print("Please provide us with your department name.\n")
         while True:
-            text_input = input("Please enter your department name here:\n").lower().strip()
+            text_input = input("Enter your department name here:\n").lower().strip()
             if(validate_text(text_input)):
                 print("Thank you for letting us know your department.\n")
                 self.all_input_data.append(text_input)
@@ -152,11 +152,10 @@ class Generator:
         via the terminal, which must be a string with 1 number. The loop
         will repeatedly request data until the data is valid.
         """
-        print("Next we need you to enter the number of inbound calls received.\n")
+        print("Please enter the number of inbound calls, e.g.100.\n")
         while True:
-            number_input = input("Please enter the inbound calls here:\n")              
+            number_input = input("Enter the inbound calls here:\n")              
             if(validate_numbers(number_input)):
-                print("it worked")
                 self.inbound_calls.append(number_input)
                 self.get_dropped_calls()
             else:
@@ -169,10 +168,11 @@ class Generator:
         via the terminal, which must be a string with 1 number. The loop
         will repeatedly request data until the data is valid.
         """ 
-        print("Finally we need you to enter the number of dropped calls.\n")
+        print("You are nearly there!")
+        print("Please enter the number of dropped calls, e.g.5.\n") 
 
         while True: 
-            number_input = input("Please enter the number of dropped calls here:\n")
+            number_input = input("Enter the number of dropped calls here:\n")
             inbound_to_check = int(self.inbound_calls[0])
             if(validate_numbers(number_input)):
                 if(int(number_input) > inbound_to_check):
@@ -185,7 +185,7 @@ class Generator:
                     self.all_input_data.append(number_input)
                     self.dropped_calls.append(number_input)
                     
-                    print("Its sad to miss customer calls....But you are nearly there!")
+                    print("Thank you!")
                     self.calculate_abandon_rate()
             else:
                 print("You have entered characters, please ensure it is only numbers")
