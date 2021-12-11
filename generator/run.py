@@ -110,7 +110,7 @@ class Generator:
                 print(self.all_input_data)
                 self.get_job_title()
             else:
-                print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
+                print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
     def get_job_title(self):
         """
@@ -160,7 +160,6 @@ class Generator:
             number_input = input("Please enter the inbound calls here: ")              
             if(validate_numbers(number_input)):
                 print("it worked")
-                self.all_input_data.append(number_input)
                 self.inbound_calls.append(number_input)
                 self.get_dropped_calls()
             else:
@@ -177,11 +176,20 @@ class Generator:
 
         while True: 
             number_input = input("Please enter the number of dropped calls here: ")
+            inbound_to_check = int(self.inbound_calls[0])
             if(validate_numbers(number_input)):
-                self.all_input_data.append(number_input)
-                self.dropped_calls.append(number_input)
-                print("Its sad to miss customer calls....But you are nearly there!")
-                self.calculate_abandon_rate()
+                if(int(number_input) > inbound_to_check):
+                    print("The number of inbound calls must be greater than the number of dropped calls.")
+                    inbound_to_check = []
+                    self.inbound_calls = []
+                    return False
+                else:
+                    self.all_input_data.append(self.inbound_calls[0])
+                    self.all_input_data.append(number_input)
+                    self.dropped_calls.append(number_input)
+                    
+                    print("Its sad to miss customer calls....But you are nearly there!")
+                    self.calculate_abandon_rate()
             else:
                 print("You have entered characters, please ensure it is only numbers")
 
