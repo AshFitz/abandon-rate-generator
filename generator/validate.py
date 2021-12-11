@@ -30,18 +30,18 @@ class Generator:
         print("""
         ------------------------------------
         ****** Abandon Rate Generator ******
-        ------------------------------------
-        """)
-        print(r"""
+        ------------------------------------""")
+        print("""
                   _______________  
                 /    ,,_____,,    \:.
                 |__| [1][2][3] |__|:  :
                    / [4][5][6] \   :  :
                   /  [7][8][9]  \   :  :
                  /   [*][0][#]   \   ..
-                |_________________|
-        """)
-        return self.description()
+                |_________________|""")
+
+        self.description()
+        self.clear_terminal()
 
     def description(self):
         """
@@ -61,8 +61,8 @@ class Generator:
         """)
 
         input("Press enter to continue....")
+        self.clear_terminal()
         if (input):
-            self.clear_terminal()
             self.abandon_rate_options()
 
     def abandon_rate_options(self):
@@ -282,9 +282,9 @@ class Generator:
             try:
                 selected_option = int(input("Choose your option:\n"))
                 if selected_option == 1:
+                    self.clear_terminal()
                     get_most_recent_data = SHEET.worksheet("call_data").get_all_values()
                     last_row = get_most_recent_data[-1]
-                    self.clear_terminal()
                     print(last_row)
                     # self.clear_terminal()
                 elif selected_option == 2:
@@ -304,4 +304,5 @@ class Generator:
         
     def clear_terminal(self):
         os.system('clear')
+
 
