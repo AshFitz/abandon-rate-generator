@@ -192,27 +192,23 @@ class Generator:
         Implement the format method which returns the devided calls as a string with 
         only 1 floating point number.
         """
-        divided_calls = (dropped_calls / inbound_calls) * 100
+
+        # divided_calls = (dropped_calls / inbound_calls) * 100
         percentage = '{:.1f}'.format(divided_calls)
         print(f"{percentage}%")
-        all_input_data.append(percentage +"%")
+        self.all_input_data.append(percentage + "%")
+        self.update_call_worksheet(self.all_input_data)
 
-        update_call_worksheet(all_input_data)
-
-
-    def update_call_worksheet(data):
+    def update_call_worksheet(self, data):
         """
         Update call worksheet, add new row with the list data provided.
         """
-
         print("Updating call worksheet.....\n")
         call_worksheet = SHEET.worksheet("call_data")
         call_worksheet.append_row(data)
         print("Call worksheet updated successfully!\n")
 
-
-
-
+    #to fix
     def get_call_sheet(self):
         print("Enter '1' to view all of the previous abandon rate submissions.")
         print("Or")
@@ -242,9 +238,9 @@ class Generator:
 
     def get_date(self):
         date = datetime.date.today()
-        all_input_data.append(str(date))
+        self.all_input_data.append(str(date))
         print(date)
         
-    # def clear_terminal():
-    #     os.system('clear')
+    def clear_terminal():
+        os.system('clear')
 
