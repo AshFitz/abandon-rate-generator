@@ -43,8 +43,6 @@ class Generator:
         """)
         return self.description()
 
-
-
     def description(self):
         """
         Describe the generator functionality. Explain the meaning of abandon rate.
@@ -63,7 +61,6 @@ class Generator:
         """)
 
         self.abandon_rate_options()
-
 
     def abandon_rate_options(self):
         """
@@ -95,7 +92,6 @@ class Generator:
             except ValueError:
                 print("Sorry you have entered an invalid input, please select from option '1' or '2'")
 
-
     def get_rep_name(self):
         """
         Get the representative's name from the user.
@@ -116,7 +112,6 @@ class Generator:
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
-
     def get_job_title(self):
         """
         Get the uses job title.
@@ -134,7 +129,6 @@ class Generator:
                 self.get_dept_name()
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
-
 
     def get_dept_name(self):
         """
@@ -154,9 +148,6 @@ class Generator:
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
-
-
-
     def get_inbound_calls(self):
         """
         Get inbound call figures input from the user.
@@ -165,24 +156,23 @@ class Generator:
         will repeatedly request data until the data is valid.
         """
         print("Next we need you to enter the number of inbound calls received.\n")
-        while True: 
-            try:
-                number_input = input("Please enter the inbound calls here: ")
-
-                
-                if inbound_calls == None:
-                    inbound_calls = inbound_input
-                    all_input_data.append(inbound_calls)
-
-                else:
-                    inbound_calls = None
-                
-            except ValueError:
-                print(f"You have entered characters, please ensure it is only numbers")
-                continue
-            else:
-                print("Yayy customers! You are nearly there!\n")
+        while True:
+            number_input = input("Please enter the inbound calls here: ")              
+            if(validate_numbers(number_input)):
+                print("it worked")
+                self.all_input_data.append(number_input)
+                self.inbound_calls.append(number_input)
                 self.get_dropped_calls()
+
+            else:
+                print("You have entered characters, please ensure it is only numbers")
+                
+            # except ValueError:
+            #     print(f"You have entered characters, please ensure it is only numbers")
+            #     continue
+            # else:
+            #     print("Yayy customers! You are nearly there!\n")
+            #     self.get_dropped_calls()
             
 
 
