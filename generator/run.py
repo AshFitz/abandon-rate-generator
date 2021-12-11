@@ -3,6 +3,7 @@ import os
 import datetime
 from google.oauth2.service_account import Credentials
 from pprint import pprint
+from generator.validations import validate_text, validate_numbers
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -123,19 +124,19 @@ class Generator:
         via the terminal, which must contain only alpha numeric values. The loop will
         repeatedly request data until the data is valid.
         """
-        num = None
         print("We also need your job title.\n")
         
-        while num is None:
-            input_value = input("Please enter your job title here: ").lower().strip()
-            if all(x.isalpha() or x.isspace() for x in input_value):
-                num = input_value
-                all_input_data.append(input_value)
+        while True:
+            text_input = input("Please enter your job title here: ").lower().strip()
+
+
+            if all(x.isalpha() or x.isspace() for x in text_input):
+                self.all_input_data.append(text_input)
                 
                 print("Thank you for letting us know your job title.\n")
                 get_dept_name()
             else:
-                print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
+                print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
 
     def get_dept_name(self):
@@ -145,19 +146,17 @@ class Generator:
         via the terminal, which must contain only alpha numeric values. The loop will
         repeatedly request data until the data is valid.
         """
-        num = None
         print("Now we need your department name.\n")
-        
-        while num is None:
-            input_value = input("Please enter your department name here: ").lower().strip()
-            if all(x.isalpha() or x.isspace() for x in input_value):
-                num = input_value
-                all_input_data.append(input_value)
+        while True:
+            text_input = input("Please enter your department name here: ").lower().strip()
+
+            if all(x.isalpha() or x.isspace() for x in text_input):
+                all_input_data.append(text_input)
                 
                 print("Thank you!.\n")
                 get_inbound_calls()
             else:
-                print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
+                print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
 
 
