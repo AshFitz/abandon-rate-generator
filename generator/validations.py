@@ -8,4 +8,9 @@ def validate_text(input_value):
 
 
 def validate_numbers(input_value):
-    return False
+    if not input_value:
+        return False
+    elif all(z.isdigit() for z in input_value):
+        return True
+    else:
+        return False
