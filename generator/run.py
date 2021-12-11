@@ -163,18 +163,8 @@ class Generator:
                 self.all_input_data.append(number_input)
                 self.inbound_calls.append(number_input)
                 self.get_dropped_calls()
-
             else:
                 print("You have entered characters, please ensure it is only numbers")
-                
-            # except ValueError:
-            #     print(f"You have entered characters, please ensure it is only numbers")
-            #     continue
-            # else:
-            #     print("Yayy customers! You are nearly there!\n")
-            #     self.get_dropped_calls()
-            
-
 
     def get_dropped_calls(self):
         """
