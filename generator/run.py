@@ -35,11 +35,12 @@ def start_generator():
 
 
 
-def description():"""
+def description():
+    """
     Describe the generator functionality. Explain the meaning of abandon rate.
     """
     print("""
-    The Abandon Rate Generator can be used track how a call center is performing.\n
+    The Abandon Rate Generator can be used to track how the call center is performing.\n
     """)
 
     print("""
@@ -62,11 +63,11 @@ def abandon_rate_options():
     block runs and the selected option is executed. If False handle the exception.
 
     """
-    print("Enter '1' to generate the abandon rate? \n")
+    print("Enter '1' to generate the abandon rate.")
 
-    print("Or\n")
+    print("Or")
 
-    print("Enter '2' view previous abandon rates? \n")
+    print("Enter '2' view previous abandon rates.\n")
 
     option_value =''
     while option_value not in [1, 2]:
@@ -75,7 +76,6 @@ def abandon_rate_options():
             if option_value == 1:
                 get_rep_name()
             elif option_value == 2:
-                print("this will be the get call")
                 get_call_sheet()
             else:
                 print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
@@ -180,7 +180,7 @@ def get_inbound_calls():
             print(f"You have entered characters, please ensure it is only numbers")
             continue
         else:
-            print("Yayy customers! You are nearly there!")
+            print("Yayy customers! You are nearly there!\n")
             get_dropped_calls()
         
 
@@ -210,7 +210,7 @@ def get_dropped_calls():
             print(f"You have entered characters, please ensure it is only numbers")
             continue
         else:
-            print("Now let's get generating!")
+            print("Now let's get generating!\n")
             calculate_abandon_rate()
           
 
@@ -244,9 +244,9 @@ def update_call_worksheet(data):
 
 
 def get_call_sheet():
-    print("Enter '1' to view all of the previous abandon rate submissions? \n")
+    print("Enter '1' to view all of the previous abandon rate submissions.")
     print("Or")
-    print("Enter '2' to view the most recent abandon rate submission? \n")
+    print("Enter '2' to view the most recent abandon rate submission.\n")
 
 
     selected_option =''
