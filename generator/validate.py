@@ -24,6 +24,7 @@ class Generator:
         self.all_input_data = []
         self.inbound_calls = []
         self.dropped_calls = []
+        self.dictionary = ['Date', 'Representative Name', 'Job Title', 'Department Name', 'Inbound Calls', 'Dropped Calls']
 
     def start_generator(self):
         print("""
@@ -104,8 +105,8 @@ class Generator:
             if (validate_text(text_input)):
                 print("Thank you for your name.\n")
                 self.all_input_data.append(text_input)
-                print(self.all_input_data)
                 self.get_job_title()
+                break
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
@@ -124,6 +125,7 @@ class Generator:
                 print("Thank you for letting us know your job title.\n")
                 self.all_input_data.append(text_input)
                 self.get_dept_name()
+                break
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
@@ -140,8 +142,8 @@ class Generator:
             if(validate_text(text_input)):
                 print("Thank you for letting us know your department.\n")
                 self.all_input_data.append(text_input)
-                print(self.all_input_data)
                 self.get_inbound_calls()
+                break
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
@@ -158,6 +160,7 @@ class Generator:
             if(validate_numbers(number_input)):
                 self.inbound_calls.append(number_input)
                 self.get_dropped_calls()
+                break
             else:
                 print("You have entered characters, please ensure it is only numbers")
 
@@ -184,11 +187,43 @@ class Generator:
                     self.all_input_data.append(self.inbound_calls[0])
                     self.all_input_data.append(number_input)
                     self.dropped_calls.append(number_input)
-                    
                     print("Thank you!")
-                    self.calculate_abandon_rate()
+                    self.confirm_user_input()
+                    return
+
             else:
                 print("You have entered characters, please ensure it is only numbers")
+
+    def confirm_user_input(self):
+        """
+        Display the user their current inputs as a list
+        if user is happy calculate the abandon rate
+        if not return to the start to try again.
+        """
+        print("Before we calculate the percentage we want to check if the information is correct.")         
+        print(self.all_input_data)
+        to_check = self.all_input_data
+        
+        for val, key in zip(self.dictionary, to_check):
+            print(val,"=", key)
+        print("If this information is correct type 'y' otherwise type 'n'")
+
+        option_input = ''
+        while option_input not in ['y', 'n']:
+            try:
+                option_input = input("Please enter 'y' or 'n':\n").lower().strip()
+                if option_input == 'y':
+                    self.calculate_abandon_rate()
+                elif option_input == 'n':
+                    self.start_generator()
+                else:
+                    print("Oops, you have entered {input} that is an invalid option".format(input=text_input))
+                    print("Please select option 'y' or 'n'")
+
+            except ValueError:
+                print("Sorry you have entered an invalid input, please select from option 'y' or 'n'")
+
+        
 
     def calculate_abandon_rate(self):
         """
@@ -205,6 +240,17 @@ class Generator:
         self.all_input_data.append(percentage + "%")
         self.update_call_worksheet(self.all_input_data)
 
+        if(divided_calls < 5):
+            print(
+            """
+            ----------------------------------------
+            Your abandon rate is {percentage}% that is great
+            ----------------------------------------
+            """.format(percentage=percentage))
+        elif(divided_calls >= 5):
+            print("Your abandon rate is {percentage}% that is high".format(percentage=percentage))
+
+
     def update_call_worksheet(self, data):
         """
         Update call worksheet, add new row with the list data provided.
@@ -220,8 +266,7 @@ class Generator:
         print("Or")
         print("Enter '2' to return home.\n")
 
-
-        selected_option =''
+        selected_option = ''
         while selected_option not in [1, 2]:
             try:
                 selected_option = int(input("Choose your option:\n"))
