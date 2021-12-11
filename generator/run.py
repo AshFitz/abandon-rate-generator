@@ -146,12 +146,11 @@ class Generator:
         print("Now we need your department name.\n")
         while True:
             text_input = input("Please enter your department name here: ").lower().strip()
-
-            if all(x.isalpha() or x.isspace() for x in text_input):
-                all_input_data.append(text_input)
-                
-                print("Thank you!.\n")
-                get_inbound_calls()
+            if(validate_text(text_input)):
+                print("Thank you for letting us know your department.\n")
+                self.all_input_data.append(text_input)
+                print(self.all_input_data)
+                self.get_inbound_calls()
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
