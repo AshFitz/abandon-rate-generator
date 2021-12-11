@@ -40,11 +40,11 @@ class Generator:
                 /   [*][0][#]   \   ..
                 |_________________|
         """)
-        description()
+        return self.description()
 
 
 
-    def description():
+    def description(self):
         """
         Describe the generator functionality. Explain the meaning of abandon rate.
         """
@@ -61,10 +61,10 @@ class Generator:
         the abandon rate is 5%.\n
         """)
 
-        abandon_rate_options()
+        self.abandon_rate_options()
 
 
-    def abandon_rate_options():
+    def abandon_rate_options(self):
         """
         Provide the user with two options. One option to generate the abandon rate
         by inputting recent call data or the other option to view recent abandon
@@ -95,7 +95,7 @@ class Generator:
                 print("Sorry you have entered an invalid input, please select from option '1' or '2'")
 
 
-    def get_rep_name():
+    def get_rep_name(self):
         """
         Get the representative's name from the user.
         Run a while loop to collect a valid string of data from the user
@@ -118,7 +118,7 @@ class Generator:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
 
-    def get_job_title():
+    def get_job_title(self):
         """
         Get the uses job title.
         Run a while loop to collect a valid string of data from the user
@@ -140,7 +140,7 @@ class Generator:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
 
 
-    def get_dept_name():
+    def get_dept_name(self):
         """
         Get the department name from the user.
         Run a while loop to collect a valid string of data from the user
@@ -164,7 +164,7 @@ class Generator:
 
 
 
-    def get_inbound_calls():
+    def get_inbound_calls(self):
         """
         Get inbound call figures input from the user.
         Run a while loop to collect a valid string of data from the user
@@ -194,7 +194,7 @@ class Generator:
             
 
 
-    def get_dropped_calls():
+    def get_dropped_calls(self):
         """
         Get dropped call figures input from the user.
         Run a while loop to collect a valid string of data from the user
@@ -224,7 +224,7 @@ class Generator:
             
 
 
-    def calculate_abandon_rate():
+    def calculate_abandon_rate(self):
         """
         Calculate the abandon rate by dividing the dropped number
         of calls by the total number of inbound calls and multiplying the result by 100.
@@ -252,7 +252,7 @@ class Generator:
 
 
 
-    def get_call_sheet():
+    def get_call_sheet(self):
         print("Enter '1' to view all of the previous abandon rate submissions.")
         print("Or")
         print("Enter '2' to view the most recent abandon rate submission.\n")
@@ -279,18 +279,11 @@ class Generator:
             except ValueError:
                 print("Sorry you have entered an invalid input, please select from option '1' or '2'")
 
-    def get_date():
+    def get_date(self):
         date = datetime.date.today()
         all_input_data.append(str(date))
         print(date)
         
-
-
-
-    def main():
-        """
-        Update!!!
-        """
     # def clear_terminal():
     #     os.system('clear')
 
