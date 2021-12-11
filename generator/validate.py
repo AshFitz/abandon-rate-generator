@@ -60,7 +60,10 @@ class Generator:
         the abandon rate is 5%.\n
         """)
 
-        self.abandon_rate_options()
+        input("Press enter to continue....")
+        if (input):
+            self.clear_terminal()
+            self.abandon_rate_options()
 
     def abandon_rate_options(self):
         """
@@ -81,8 +84,10 @@ class Generator:
             try:
                 option_value = int(input("Choose your option:\n"))
                 if option_value == 1:
+                    self.clear_terminal()
                     self.get_rep_name()
                 elif option_value == 2:
+                    self.clear_terminal()
                     self.get_call_sheet()
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
@@ -103,6 +108,7 @@ class Generator:
         while True:
             text_input = input("Enter your name here:\n").lower().strip()
             if (validate_text(text_input)):
+                self.clear_terminal()
                 print("Thank you for your name.\n")
                 self.all_input_data.append(text_input)
                 self.get_job_title()
@@ -122,6 +128,7 @@ class Generator:
         while True:
             text_input = input("Enter your job title here:\n").lower().strip()
             if(validate_text(text_input)):
+                self.clear_terminal()
                 print("Thank you for letting us know your job title.\n")
                 self.all_input_data.append(text_input)
                 self.get_dept_name()
@@ -140,6 +147,7 @@ class Generator:
         while True:
             text_input = input("Enter your department name here:\n").lower().strip()
             if(validate_text(text_input)):
+                self.clear_terminal()
                 print("Thank you for letting us know your department.\n")
                 self.all_input_data.append(text_input)
                 self.get_inbound_calls()
@@ -154,11 +162,13 @@ class Generator:
         via the terminal, which must be a string with 1 number. The loop
         will repeatedly request data until the data is valid.
         """
-        print("Please enter the number of inbound calls, e.g.100.\n")
+        print("Please enter the number of inbound calls, e.g.'100'.\n")
         while True:
             number_input = input("Enter the inbound calls here:\n")              
             if(validate_numbers(number_input)):
+                self.clear_terminal()
                 self.inbound_calls.append(number_input)
+                print("Thank you!")
                 self.get_dropped_calls()
                 break
             else:
@@ -172,12 +182,13 @@ class Generator:
         will repeatedly request data until the data is valid.
         """ 
         print("You are nearly there!")
-        print("Please enter the number of dropped calls, e.g.5.\n") 
+        print("Please enter the number of dropped calls, e.g.'5'.\n") 
 
         while True: 
             number_input = input("Enter the number of dropped calls here:\n")
             inbound_to_check = int(self.inbound_calls[0])
             if(validate_numbers(number_input)):
+                self.clear_terminal()
                 if(int(number_input) > inbound_to_check):
                     print("The number of inbound calls must be greater than the number of dropped calls.")
                     inbound_to_check = []
@@ -200,19 +211,19 @@ class Generator:
         if user is happy calculate the abandon rate
         if not return to the start to try again.
         """
-        print("Before we calculate the percentage we want to check if the information is correct.")         
-        print(self.all_input_data)
+        print("Before we calculate the percentage we want to check if the information is correct.\n")         
         to_check = self.all_input_data
         
         for val, key in zip(self.dictionary, to_check):
             print(val,"=", key)
-        print("If this information is correct type 'y' otherwise type 'n'")
+        print("\nIf this information is correct type 'y' otherwise type 'n'")
 
         option_input = ''
         while option_input not in ['y', 'n']:
             try:
                 option_input = input("Please enter 'y' or 'n':\n").lower().strip()
                 if option_input == 'y':
+                    self.clear_terminal()
                     self.calculate_abandon_rate()
                 elif option_input == 'n':
                     self.start_generator()
@@ -236,7 +247,7 @@ class Generator:
         inbound_calls_to_calc = int(self.inbound_calls[0])
         divided_calls = (dropped_calls_to_calc / inbound_calls_to_calc) * 100
         percentage = '{:.1f}'.format(divided_calls)
-        print(f"{percentage}%")
+        # print(f"{percentage}%")
         self.all_input_data.append(percentage + "%")
         self.update_call_worksheet(self.all_input_data)
 
