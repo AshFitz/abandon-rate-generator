@@ -192,8 +192,9 @@ class Generator:
         Implement the format method which returns the devided calls as a string with 
         only 1 floating point number.
         """
-
-        # divided_calls = (dropped_calls / inbound_calls) * 100
+        dropped_calls_to_calc = int(self.dropped_calls[0])
+        inbound_calls_to_calc = int(self.inbound_calls[0])
+        divided_calls = (dropped_calls_to_calc / inbound_calls_to_calc) * 100
         percentage = '{:.1f}'.format(divided_calls)
         print(f"{percentage}%")
         self.all_input_data.append(percentage + "%")
