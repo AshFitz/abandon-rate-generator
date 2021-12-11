@@ -184,25 +184,6 @@ class Generator:
                 self.calculate_abandon_rate()
             else:
                 print("You have entered characters, please ensure it is only numbers")
-            # try:
-            #     dropped_input = int(input("Enter your data here: "))
-            #     global dropped_calls 
-                
-            #     if dropped_calls == None: 
-            #         dropped_calls = dropped_input
-            #         all_input_data.append(dropped_calls)
-
-            #     else: 
-            #         inbound_calls = None   
-                
-            # except ValueError:
-            #     print(f"You have entered characters, please ensure it is only numbers")
-            #     continue
-            # else:
-            #     print("Now let's get generating!\n")
-            #     calculate_abandon_rate()
-            
-
 
     def calculate_abandon_rate(self):
         """
