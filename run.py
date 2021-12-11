@@ -18,57 +18,35 @@ SHEET = GSPREAD_CLIENT.open('call_data')
 
 def start_generator():
     print("""
-    -----------------------------------------
-    ******** Abandon Rate Generator ********
-    -----------------------------------------
+    ------------------------------------
+    ****** Abandon Rate Generator ******
+    ------------------------------------
     """)
     print(r"""
-              _              _
-             | |------------| |
-          .-'| |            | |`-.
-        .'   | |            | |   `.
-     .-'      \ \          / /      `-.
-   .'        _.| |--------| |._        `.
-  /    -.  .'  | |        | |  `.  .-    \
- /       `(    | |________| |    )'       \
-|          \  .i------------i.  /          |
-|        .-')/                \(`-.        |
-\    _.-'.-'/     ________     \`-.`-._    /
- \.-'_.-'  /   .-' ______ `-.   \  `-._`-./\
-  `-'     /  .' .-' _   _`-. `.  \     `-' \\
-         | .' .' _ (3) (2) _`. `. |        //
-        / /  /  (4)  ___  (1)_\  \ \       \\
-        | | |  _   ,'   `.==' `| | |       //
-        | | | (5)  | A.F | (O) | | |      //
-        | | |   _  `.___.' _   | | |      \\
-        | \  \ (6)  _   _ (9) /  / |      //
-        /  `. `.   (7) (8)  .' .'  \      \\
-       /     `. `-.______.-' .'     \     //
-      /        `-.________.-'        \ __//
-     |                                |--'
-     |================================|
-     "--------------------------------"
+              _______________  
+            /    ,,_____,,    \:.
+            |__| [1][2][3] |__|:  :
+               / [4][5][6] \   :  :
+              /  [7][8][9]  \   :  :
+             /   [*][0][#]   \   ..
+            |_________________|
     """)
     description()
 
 
 
-def description():
-    """
+def description():"""
     Describe the generator functionality. Explain the meaning of abandon rate.
     """
-    print(
-    """
+    print("""
     The Abandon Rate Generator can be used track how a call center is performing.\n
     """)
 
-    print(
-    """
-    The abandon rate is the percentage of customers that abandon their call before speaking to a call center representative.
+    print("""
+    The abandon rate is the % of customers that abandon their call before speaking to a call center representative.
     This is calculated by dividing the number of abandonded calls by the total number of calls received.\n
     """)
-    print(
-    """
+    print("""
     Here is an example: If a call center receives 1000 calls and 50 of those calls are abandoned,
     the abandon rate is 5%.\n
     """)
