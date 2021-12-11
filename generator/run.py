@@ -76,14 +76,14 @@ class Generator:
 
         print("Enter '2' view previous abandon rates.\n")
 
-        option_value =''
+        option_value = ''
         while option_value not in [1, 2]:
             try:
                 option_value = int(input("Choose your option: "))
                 if option_value == 1:
-                    get_rep_name()
+                    self.get_rep_name()
                 elif option_value == 2:
-                    get_call_sheet()
+                    self.get_call_sheet()
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
                     print("Please select option '1' or '2'")
