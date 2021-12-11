@@ -65,7 +65,7 @@ def description():
     print(
     """
     The abandon rate is the percentage of customers that abandon their call before speaking to a call center representative.
-    This is calculated by dividing the number of abandonded call by the total number of calls received.\n
+    This is calculated by dividing the number of abandonded calls by the total number of calls received.\n
     """)
     print(
     """
@@ -116,7 +116,7 @@ def get_rep_name():
     repeatedly request data until the data is valid.
     """
     num = None
-    print("We need the representative's name.\n")
+    print("Firstly, we need your name.\n")
 
     get_date()
     while num is None:
@@ -125,7 +125,7 @@ def get_rep_name():
             num = input_value
             all_input_data.append(input_value)
             
-            print("Thank you for your name.\n")
+            print("Thank you!.\n")
             get_job_title()
         else:
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
@@ -169,7 +169,7 @@ def get_dept_name():
             num = input_value
             all_input_data.append(input_value)
             
-            print("Thank you for letting us know your department.\n")
+            print("Thank you!.\n")
             get_inbound_calls()
         else:
             print("Sorry we can't accept {input}, please enter text only.".format(input=input_value))
@@ -202,7 +202,7 @@ def get_inbound_calls():
             print(f"You have entered characters, please ensure it is only numbers")
             continue
         else:
-            print("Yayy customers.")
+            print("Yayy customers! You are nearly there!")
             get_dropped_calls()
         
 
@@ -214,7 +214,7 @@ def get_dropped_calls():
     via the terminal, which must be a string with 1 number. The loop
     will repeatedly request data until the data is valid.
     """ 
-    print("Enter the number of dropped calls.\n")
+    print("Finally we need you to enter the number of dropped calls.\n")
 
     while True: 
         try:
@@ -232,7 +232,7 @@ def get_dropped_calls():
             print(f"You have entered characters, please ensure it is only numbers")
             continue
         else:
-            print("Its sad to miss customer calls....But you are nearly there!")
+            print("Now let's get generating!")
             calculate_abandon_rate()
           
 
@@ -257,10 +257,10 @@ def update_call_worksheet(data):
     Update call worksheet, add new row with the list data provided.
     """
 
-    print("Updating sales worksheet.....\n")
+    print("Updating call worksheet.....\n")
     call_worksheet = SHEET.worksheet("call_data")
     call_worksheet.append_row(data)
-    print("Call worksheet updated successfully.\n")
+    print("Call worksheet updated successfully!\n")
 
 
 
