@@ -2,7 +2,6 @@ import gspread
 import os
 import datetime
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 from generator.validations import validate_text, validate_numbers
 
 SCOPE = [
@@ -33,12 +32,12 @@ class Generator:
         ------------------------------------
         """)
         print(r"""
-                _______________  
+                  _______________  
                 /    ,,_____,,    \:.
                 |__| [1][2][3] |__|:  :
-                / [4][5][6] \   :  :
-                /  [7][8][9]  \   :  :
-                /   [*][0][#]   \   ..
+                   / [4][5][6] \   :  :
+                  /  [7][8][9]  \   :  :
+                 /   [*][0][#]   \   ..
                 |_________________|
         """)
         return self.description()
@@ -79,7 +78,7 @@ class Generator:
         option_value = ''
         while option_value not in [1, 2]:
             try:
-                option_value = int(input("Choose your option: "))
+                option_value = int(input("Choose your option:\n"))
                 if option_value == 1:
                     self.get_rep_name()
                 elif option_value == 2:
@@ -103,7 +102,7 @@ class Generator:
         self.get_date()
 
         while True:
-            text_input = input("Please enter your name here: ").lower().strip()
+            text_input = input("Please enter your name here:\n").lower().strip()
             if (validate_text(text_input)):
                 print("Thank you for your name.\n")
                 self.all_input_data.append(text_input)
@@ -122,7 +121,7 @@ class Generator:
         print("We also need your job title.\n")
         
         while True:
-            text_input = input("Please enter your job title here: ").lower().strip()
+            text_input = input("Please enter your job title here:\n").lower().strip()
             if(validate_text(text_input)):
                 print("Thank you for letting us know your job title.\n")
                 self.all_input_data.append(text_input)
@@ -139,7 +138,7 @@ class Generator:
         """
         print("Now we need your department name.\n")
         while True:
-            text_input = input("Please enter your department name here: ").lower().strip()
+            text_input = input("Please enter your department name here:\n").lower().strip()
             if(validate_text(text_input)):
                 print("Thank you for letting us know your department.\n")
                 self.all_input_data.append(text_input)
@@ -157,7 +156,7 @@ class Generator:
         """
         print("Next we need you to enter the number of inbound calls received.\n")
         while True:
-            number_input = input("Please enter the inbound calls here: ")              
+            number_input = input("Please enter the inbound calls here:\n")              
             if(validate_numbers(number_input)):
                 print("it worked")
                 self.inbound_calls.append(number_input)
@@ -175,7 +174,7 @@ class Generator:
         print("Finally we need you to enter the number of dropped calls.\n")
 
         while True: 
-            number_input = input("Please enter the number of dropped calls here: ")
+            number_input = input("Please enter the number of dropped calls here:\n")
             inbound_to_check = int(self.inbound_calls[0])
             if(validate_numbers(number_input)):
                 if(int(number_input) > inbound_to_check):
@@ -227,7 +226,7 @@ class Generator:
         selected_option =''
         while selected_option not in [1, 2]:
             try:
-                selected_option = int(input("Choose your option: "))
+                selected_option = int(input("Choose your option:\n"))
                 if selected_option == 1:
                     get_all_data = SHEET.worksheet("call_data").get_all_values()
                     pprint(get_all_data)
