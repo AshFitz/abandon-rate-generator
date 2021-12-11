@@ -176,23 +176,31 @@ class Generator:
         print("Finally we need you to enter the number of dropped calls.\n")
 
         while True: 
-            try:
-                dropped_input = int(input("Enter your data here: "))
-                global dropped_calls 
-                
-                if dropped_calls == None: 
-                    dropped_calls = dropped_input
-                    all_input_data.append(dropped_calls)
-
-                else: 
-                    inbound_calls = None   
-                
-            except ValueError:
-                print(f"You have entered characters, please ensure it is only numbers")
-                continue
+            number_input = input("Please enter the number of dropped calls here: ")
+            if(validate_numbers(number_input)):
+                self.all_input_data.append(number_input)
+                self.dropped_calls.append(number_input)
+                print("Its sad to miss customer calls....But you are nearly there!")
+                self.calculate_abandon_rate()
             else:
-                print("Now let's get generating!\n")
-                calculate_abandon_rate()
+                print("You have entered characters, please ensure it is only numbers")
+            # try:
+            #     dropped_input = int(input("Enter your data here: "))
+            #     global dropped_calls 
+                
+            #     if dropped_calls == None: 
+            #         dropped_calls = dropped_input
+            #         all_input_data.append(dropped_calls)
+
+            #     else: 
+            #         inbound_calls = None   
+                
+            # except ValueError:
+            #     print(f"You have entered characters, please ensure it is only numbers")
+            #     continue
+            # else:
+            #     print("Now let's get generating!\n")
+            #     calculate_abandon_rate()
             
 
 
@@ -259,10 +267,3 @@ class Generator:
     # def clear_terminal():
     #     os.system('clear')
 
-    all_input_data = []
-
-    inbound_calls = None
-    dropped_calls = None
-
-    start_generator()
-    # get_call_sheet()
