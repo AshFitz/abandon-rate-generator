@@ -165,11 +165,10 @@ class Generator:
         will repeatedly request data until the data is valid.
         """
         print("Next we need you to enter the number of inbound calls received.\n")
-
         while True: 
             try:
-                inbound_input = int(input("Please enter the inbound calls here: "))
-                global inbound_calls
+                number_input = input("Please enter the inbound calls here: ")
+
                 
                 if inbound_calls == None:
                     inbound_calls = inbound_input
@@ -183,7 +182,7 @@ class Generator:
                 continue
             else:
                 print("Yayy customers! You are nearly there!\n")
-                get_dropped_calls()
+                self.get_dropped_calls()
             
 
 
