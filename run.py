@@ -9,8 +9,7 @@ class Main:
 
     def run(self):
         self.page.start_generator()
-        self.page.get_inbound_calls()
-        self.page.get_dropped_calls()
+        # self.page.get_dropped_calls()
 
 
 main = Main()

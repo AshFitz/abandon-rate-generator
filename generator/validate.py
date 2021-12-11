@@ -86,8 +86,6 @@ class Generator:
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
                     print("Please select option '1' or '2'")
-                    continue
-            
             except ValueError:
                 print("Sorry you have entered an invalid input, please select from option '1' or '2'")
 
@@ -218,9 +216,9 @@ class Generator:
 
     #to fix
     def get_call_sheet(self):
-        print("Enter '1' to view all of the previous abandon rate submissions.")
+        print("Enter '1' to view the most recent abandon rate submission.")
         print("Or")
-        print("Enter '2' to view the most recent abandon rate submission.\n")
+        print("Enter '2' to return home.\n")
 
 
         selected_option =''
@@ -228,18 +226,17 @@ class Generator:
             try:
                 selected_option = int(input("Choose your option:\n"))
                 if selected_option == 1:
-                    get_all_data = SHEET.worksheet("call_data").get_all_values()
-                    pprint(get_all_data)
-                    # start_generator()
-                elif selected_option == 2:
                     get_most_recent_data = SHEET.worksheet("call_data").get_all_values()
                     last_row = get_most_recent_data[-1]
-                    pprint(last_row)
-                    # start_generator()
+                    self.clear_terminal()
+                    print(last_row)
+                    # self.clear_terminal()
+                elif selected_option == 2:
+                    self.start_generator()
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
                     print("Please select option '1' or '2'")
-                    continue
+                    # continue
             
             except ValueError:
                 print("Sorry you have entered an invalid input, please select from option '1' or '2'")
@@ -249,6 +246,6 @@ class Generator:
         self.all_input_data.append(str(date))
         print(date)
         
-    def clear_terminal():
+    def clear_terminal(self):
         os.system('clear')
 
