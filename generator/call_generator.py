@@ -43,9 +43,9 @@ class Generator:
 
         print(
             """
-        ------------------------------------
-        ****** Abandon Rate Generator ******
-        ------------------------------------"""
+        --------------------------------------
+        ***** The Abandon Rate Generator *****
+        --------------------------------------"""
         )
         print(
             r"""
@@ -57,8 +57,9 @@ class Generator:
                  /   [*][0][#]   \   ..
                 |_________________|"""
         )
-
-        self.description()
+        input("\nPress enter to continue....")
+        if input:
+            self.description()
 
     def description(self):
         """
@@ -75,15 +76,15 @@ class Generator:
         print(
             """
         The abandon rate is the % of customers that abandon their call before
-        speaking to a call center representative. This is calculated by dividing
-        the number of abandonded calls by the total number of calls received.
+        speaking to a call center representative. This is calculated by
+        dividing the number of abandonded calls by the total number of
+        calls received.\n
         """
         )
         print(
             """
-        Here is an example: If a call center receives 1000 calls and
-        50 of those calls are abandoned,
-        the abandon rate is 5%.\n
+        For example: If a call center receives 1000 calls and 50 of those
+        calls are abandoned, the abandon rate is 5%.\n
         """
         )
 
@@ -141,11 +142,10 @@ class Generator:
         via the terminal, is passed to the validate_text function, this
         then checks if the string is valid using built in methods,
         I set the input to lower and strip white spacing to ensure
-        easier validation.
-        The loop will repeatedly request data until the data is valid.
-        When the contition returns true from validating, we proceed with
-        clearing the terminal, update the user of the success, add the
-        input to a list, and call the next function.
+        easier validation. The loop will repeatedly request data until
+        the data is valid. When the contition returns true from validating,
+        we proceed with clearing the terminal, update the user of the
+        success, add the input to a list, and call the next function.
         """
         print("Please provide us with your name.\n")
         self.get_date()
@@ -171,7 +171,7 @@ class Generator:
         Get the users job title.
         Run a while loop and collect a users input, attempt to validate
         the string of data from the user via the terminal,
-        which must contain only alpha numeric values. 
+        which must contain only alpha numeric values.
         The loop will repeatedly request data until the data is valid.
         when the contition returns true from validating, we proceed with
         clearing the terminal, update the user of the success, add the
