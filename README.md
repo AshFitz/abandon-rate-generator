@@ -119,6 +119,15 @@
 
 * ![Pep8 Validator Validations File](https://raw.githubusercontent.com/AshFitz/abandon-rate-generator/main/assets/testing/pep8_validations_file.JPG)
 
+## Bugs
+* Bugs that occured during development that are now fixed in deployment:
+
+<p>Issue with terminal was appearing when building the application. In some situations you click a menu option, and expect the function to be carried out and display the next steps or be prompted with a question, the terminal was clearing just as the information was returning. The user experience was effected by this and was a high priority bug to resolve. The process of fixing this was simply to comment out all clear_terminal statements and work backwards to find the issue. This was done as it was hard to see straight away where I may have placed it incorrectly, as they all seemed to be in the right place. Once I found the clear_terminal issue that was effecting the flow, I moved it from its location and added it to a more relevant place where it does not break the flow.
+</p>
+
+<p>Issues validating text and numbers. When starting this app I never really handled a user input properly before, or even to a point where we only accept a specific input. At first I was accepting any data and not validating the text correctly. You could input any char, spaces, special characters etc. This would have been a major bug if these chars were accepted to the spreadsheet. A simple and elegant solution to this was adding the isalpha() method and the .isspace(), this ensured only alphabetical chars were accepted and you could also leave in a space if you had a double barreled name.
+</p>
+
 
 
 
