@@ -208,7 +208,7 @@ class Generator:
         """
         print("Please provide us with your department name.\n")
         while True:
-            text_input = input("Enter your department"
+            text_input = input("Enter your department "
                                "name here:\n").lower().strip()
             if validate_text(text_input):
                 self.clear_terminal()
@@ -297,21 +297,21 @@ class Generator:
         If not return user to the start to try again. Handle any exeptions.
         """
         print(
-            "Before we calculate the percentage we want to check"
+            "Before we calculate the percentage we want to check "
             "if the information is correct.\n"
         )
         to_check = self.all_input_data
 
         for val, key in zip(self.dictionary, to_check):
             print(val, "=", key)
-        print("\nIf the information is correct type 'y', or"
-              " if the information is incorrect type 'n' to"
+        print("\nIf the information is correct type 'y' \nOr"
+              "\nIf the information is incorrect type 'n' to "
               "start again.")
 
         option_input = ""
         while option_input not in ["y", "n"]:
             try:
-                option_input = input("Please"
+                option_input = input("Please "
                                      "enter 'y' or 'n':\n").lower().strip()
                 if option_input == "y":
                     self.clear_terminal()
