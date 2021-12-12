@@ -258,7 +258,7 @@ class Generator:
         Handle by letting the user know if it is greater than inbound calls
         print message to user, reset the inbound_to_check to an empty list.
         If it passes validation, append to the lists. Notify user of success.
-        Call next func which allows the user to verify their inputs before 
+        Call next func which allows the user to verify their inputs before
         posting to the spreadsheet.
         """
         print("You are nearly there!")
@@ -337,7 +337,9 @@ class Generator:
         Calculate the abandon rate by dividing the dropped number of calls by
         the total number of inbound calls and multiplying the result by 100.
         Implement the format method which returns the devided calls as a string
-        with only 1 floating point number.
+        with only 1 floating point number, check conditions if
+        its below a number notify the user of the condition
+        all the user to continue by pressint enter.
         """
         dropped_calls_to_calc = int(self.dropped_calls[0])
         inbound_calls_to_calc = int(self.inbound_calls[0])
@@ -371,7 +373,11 @@ class Generator:
 
     def update_call_worksheet(self, data):
         """
-        Update call worksheet, add new row with the list data provided.
+        Update call worksheet takes one parameter,
+        specify the worksheet name, update a new
+        row with the data thats has been passed as arguement.
+        Update the user with a print statement to say its updating.
+        and when it was successful.
         """
         print("Updating call worksheet.....\n")
         call_worksheet = SHEET.worksheet("call_data")
@@ -379,6 +385,12 @@ class Generator:
         print("Call worksheet updated successfully!\n")
 
     def get_call_sheet(self):
+        """
+        function to allow the user to choose between,
+        getting the most recent submission to the sheet,
+        view the full spreadsheet if necessary or if they
+        dont want any of these options to return home.
+        """
         print("Enter '1' to view the most recent abandon rate submission.")
         print("Or")
         print("Enter '2' to view the full spreadsheet.\n")
@@ -429,8 +441,20 @@ class Generator:
                 )
 
     def get_date(self):
+        """
+        Function that gets the current date
+        today, so we can keep track of the dates
+        the user has inputted their information.
+        """
         date = datetime.date.today()
         self.all_input_data.append(str(date))
 
     def clear_terminal(self):
+        """
+        Function that can be called in the class,
+        it uses os and we are accessing the system
+        method and passing the value clear, this in return
+        will clearn the terminal throughout the application
+        when necessary.
+        """
         os.system("clear")
