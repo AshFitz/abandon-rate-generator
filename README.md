@@ -30,6 +30,7 @@
     * I want a simple and interactive user experience.
     * I want to clearly explain the purpose of the app and how an abandon rate is generated.
     * I want clear output data in the terminal.
+    * I want the user to confirm their inputs before posting to the spreadsheet.
     * I want to provide the user with feedback if an incorrect input is entered.
     * I want to give the user the option to view all data inputs.
 
@@ -37,5 +38,13 @@
     * I want to easily enter in data.
     * I want to be provided with feedback if the data entered is incorrect.
     * I want an option to confirm all my data is correct before submitting.
+    * I want to be able to confirm my inputs before the abandon rate is generated.
     * I want a simple and easy to navigate app.
     * I want to understand the purpose of that app.
+
+## Fuctional Scope
+<p> The following flowchart displays the flow of "The Abandon Rate Generator".
+</p>
+
+![Flow Chart](https://raw.githubusercontent.com/AshFitz/abandon-rate-generator/main/assets/flowchart/flowchart.png)
+
