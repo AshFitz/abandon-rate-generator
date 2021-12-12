@@ -75,9 +75,8 @@ class Generator:
         print(
             """
         The abandon rate is the % of customers that abandon their call before
-        speaking to a call center representative.
-        This is calculated by dividing the number of abandonded calls by the
-        total number of calls received.
+        speaking to a call center representative. This is calculated by dividing
+        the number of abandonded calls by the total number of calls received.
         """
         )
         print(
