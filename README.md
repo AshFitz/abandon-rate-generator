@@ -48,3 +48,30 @@
 
 ![Flow Chart](https://raw.githubusercontent.com/AshFitz/abandon-rate-generator/main/assets/flowchart/flowchart.png)
 
+## Features
+
+### Welcome Message
+<p>Welcomes the user to the app.</p>
+*********************Insert Image
+
+### Description
+<p>Informs the user ont the meaning of abandon rate and explains the functionality.</p>
+**************************Inset image
+
+### User Options
+<p>The user is provided with two options. One to generate an abandon rate and the other, to view prevous abandon rate inputs.</p>
+*****************Insert Image
+
+### Option 1: Generate an abandon rate
+<p>The user will be requested to provide multiple inputs including their name, job title, departement, the number of inbound calls and the number of outbound calls. Before submitting the data the user must confirm if the inputs are correct. Once confirmed the user will be presented with the abandon rate %. If the details are incorrect the user has the option to return home to try again.</p>
+*****************Insert all Images
+
+### Option 2: View previous abandon rates
+<p>The user will be provided with 3 options. To view the most recent abandon rate, a link to the spreadsheet to view all previous input data or to return home. If the user choses view the most recent abandon rate they will be provided with the last submission. They will provided with the URL of the spreadsheet if they chose the second option to view all of the inputs. The last option will return the user to the home page to start again if they chose. </p>
+*****************Insert all Images
+
+## Future Features
+* I would like to provide the user with an input to provide the number of agents working during the times the inbound calls were recieved. When the data is analysed it may come to light they may have needed more staff which caused a hih abandon rate of calls. Over time the call center will have the data to forcast how busy it will be on certain days at certain times. The agent input will allow the call center to forcast how many agents they may need at those times to reduce the abandon rate. In turn this will help increase the overall performance of the call center.
+* I would like to use a data base instead of a spreadsheet.
+
+
