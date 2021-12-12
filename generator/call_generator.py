@@ -66,6 +66,7 @@ class Generator:
         Describes the generator functionality. Explain the meaning
         of abandon rate to the user.
         """
+        self.clear_terminal()
         print(
             """
         The Abandon Rate Generator has been created for this call
@@ -239,7 +240,7 @@ class Generator:
             if validate_numbers(number_input):
                 self.clear_terminal()
                 self.inbound_calls.append(number_input)
-                print("Thank you!")
+                print("Thank you! You are nearly there!\n")
                 self.get_dropped_calls()
                 break
             else:
@@ -256,12 +257,11 @@ class Generator:
         if the number of dropped calls is greater than the inbound calls.
         This is handled by a print statement, letting the user know the
         number of inbound calls must be higher than the dropped calls
-        and reset the inbound_to_check to an empty list. If it passes 
+        and reset the inbound_to_check to an empty list. If it passes
         validation, append to the lists. Notify user of success. Call
         next func which allows the user to verify their inputs before
         posting to the spreadsheet.
         """
-        print("You are nearly there!")
         print("Please enter the number of dropped calls, e.g.'5'.\n")
 
         while True:
@@ -281,7 +281,7 @@ class Generator:
                     self.all_input_data.append(self.inbound_calls[0])
                     self.all_input_data.append(number_input)
                     self.dropped_calls.append(number_input)
-                    print("Thank you!")
+                    print("Thank you!\n")
                     self.confirm_user_input()
 
             else:
@@ -349,28 +349,34 @@ class Generator:
         self.update_call_worksheet(self.all_input_data)
 
         print("We aim to have an abandon rate below 5%.")
-        
+
         if divided_calls < 5:
             print(
                 """
-            ----------------------------------------
-            Your abandon rate is {percentage}% :)
-            ----------------------------------------
+----------------------------------------
+    Your abandon rate is {percentage}% ԅ(≖‿≖ԅ)
+----------------------------------------
             """.format(
                     percentage=percentage
                 )
             )
             input("Press enter to return to the start....")
             if input:
+                self.clear_terminal()
                 self.start_generator()
         elif divided_calls >= 5:
             print(
-                "Your abandon rate is {percentage}% :(".format(
+                """
+----------------------------------------
+    Your abandon rate is {percentage}% ಠ_ಠ
+----------------------------------------
+            """.format(
                     percentage=percentage
                 )
             )
             input("Press enter to return to the start....")
             if input:
+                self.clear_terminal()
                 self.start_generator()
 
     def update_call_worksheet(self, data):
@@ -388,13 +394,12 @@ class Generator:
 
     def get_call_sheet(self):
         """
-        Allows the user to choose between, viewing the 
+        Allows the user to choose between, viewing the
         most recent submission to the sheet,view the
         full spreadsheet if necessary or if they
         dont want any of these options to return home.
         """
-        print("Enter '1' to view the most recent abandon rate submission.")
-        print("Or")
+        print("Enter '1' to view the most recent abandon rate entry.")
         print("Enter '2' to view the full spreadsheet.")
         print("Enter '3' to return home.\n")
 
@@ -406,24 +411,29 @@ class Generator:
                     self.clear_terminal()
                     data = SHEET.worksheet("call_data").get_all_values()
                     last_row = data[-1]
+                    print("This is the most recent abandon rate entry.\n")
                     for val, key in zip(self.dictionary, last_row):
                         print(val, "=", key)
-                    input("Press enter to return to the start....")
+                    input("\nPress enter to return to the start....")
                     if input:
                         self.abandon_rate_options()
 
                 elif selected_option == 2:
                     self.clear_terminal()
                     print(
-                        "Copy the link below into a new tab."
-                        "This will display the full spreadsheet"
-                        "with all data."
+                        "Copy the link below into a new tab in your browser. "
+                        "This will display the full spreadsheet "
+                        "with all data.\n"
+                    )
+                    print(
+                        "Or Press ctrl + click the link to automatically open "
+                        "the file in your browser.\n"
                     )
                     print(
                         "https://docs.google.com/spreadsheets/d/1IuRuySISMZsv3"
                         "4Ujaw6ERiFJoHikSjU6SIPbojHFTFI/edit?usp=sharing"
                     )
-                    input("Press enter to return to the start....")
+                    input("\nPress enter to return to the start....")
                     if input:
                         self.abandon_rate_options()
                 elif selected_option == 3:
@@ -434,12 +444,12 @@ class Generator:
                         "Oops, you have entered {input} that"
                         "is an invalid option".format(input=selected_option)
                     )
-                    print("Please select option '1' or '2'.")
+                    print("Please select option '1', '2', '3'.")
 
             except ValueError:
                 print(
                     "Sorry you have entered an invalid input,"
-                    "please select from option '1' or '2'."
+                    "please select from option '1', '2', '3'."
                 )
 
     def get_date(self):
