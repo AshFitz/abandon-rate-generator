@@ -41,7 +41,6 @@ class Generator:
                 |_________________|""")
 
         self.description()
-        self.clear_terminal()
 
     def description(self):
         """
@@ -61,7 +60,6 @@ class Generator:
         """)
 
         input("Press enter to continue....")
-        self.clear_terminal()
         if (input):
             self.abandon_rate_options()
 
@@ -73,6 +71,7 @@ class Generator:
         block runs and the selected option is executed. If False handle the exception.
 
         """
+        self.clear_terminal()
         print("Enter '1' to generate the abandon rate.")
 
         print("Or")
@@ -84,13 +83,13 @@ class Generator:
             try:
                 option_value = int(input("Choose your option:\n"))
                 if option_value == 1:
-                    # self.clear_terminal()
+                    self.clear_terminal()
                     self.get_rep_name()
-                    # break
+                    break
                 elif option_value == 2:
-                    # self.clear_terminal()
+                    self.clear_terminal()
                     self.get_call_sheet()   
-                    # break
+                    break
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=option_value))
                     print("Please select option '1' or '2'")
@@ -115,7 +114,7 @@ class Generator:
                 print("Thank you for your name.\n")
                 self.all_input_data.append(text_input)
                 self.get_job_title()
-                # break
+                break
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
@@ -135,7 +134,7 @@ class Generator:
                 print("Thank you for letting us know your job title.\n")
                 self.all_input_data.append(text_input)
                 self.get_dept_name()
-                # break
+                break
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
@@ -154,7 +153,7 @@ class Generator:
                 print("Thank you for letting us know your department.\n")
                 self.all_input_data.append(text_input)
                 self.get_inbound_calls()
-                # break
+                break
             else:
                 print("Sorry we can't accept {input}, please enter text only.".format(input=text_input))
 
@@ -173,7 +172,7 @@ class Generator:
                 self.inbound_calls.append(number_input)
                 print("Thank you!")
                 self.get_dropped_calls()
-                # break
+                break
             else:
                 print("You have entered characters, please ensure it is only numbers")
 
@@ -196,7 +195,7 @@ class Generator:
                     print("The number of inbound calls must be greater than the number of dropped calls.")
                     inbound_to_check = []
                     self.inbound_calls = []
-                    # break
+                    break
                 else:
                     self.all_input_data.append(self.inbound_calls[0])
                     self.all_input_data.append(number_input)
@@ -228,6 +227,7 @@ class Generator:
                     self.clear_terminal()
                     self.calculate_abandon_rate()
                 elif option_input == 'n':
+                    self.clear_terminal()
                     self.start_generator()
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=text_input))
@@ -260,9 +260,14 @@ class Generator:
             Your abandon rate is {percentage}% that is great
             ----------------------------------------
             """.format(percentage=percentage))
+            input("Press enter to return to the start....")
+            if (input):
+                self.start_generator()
         elif(divided_calls >= 5):
             print("Your abandon rate is {percentage}% that is high".format(percentage=percentage))
-
+            input("Press enter to return to the start....")
+            if (input):
+                self.start_generator()
 
     def update_call_worksheet(self, data):
         """
@@ -273,73 +278,47 @@ class Generator:
         call_worksheet.append_row(data)
         print("Call worksheet updated successfully!\n")
 
-    #to fix
     def get_call_sheet(self):
-        # self.clear_terminal()
         print("Enter '1' to view the most recent abandon rate submission.")
         print("Or")
         print("Enter '2' to view the full spreadsheet.\n")
         print("Enter '3' to return home.\n")
         
         selected_option = ''
-        while selected_option not in [1, 2]:
+        while selected_option not in [1, 2, 3]:            
             try:
-                selected_option = int(input("Choose your option: "))
+                selected_option = int(input("Choose your option:\n"))
                 if selected_option == 1:
-                    get_all_data = SHEET.worksheet("call_data").get_all_values()
-                    print(get_all_data)
-
-                    # start_generator()
-                elif selected_option == 2:
+                    self.clear_terminal()
                     get_most_recent_data = SHEET.worksheet("call_data").get_all_values()
                     last_row = get_most_recent_data[-1]
-                    print(last_row)
-                    # start_generator()
+                    for val, key in zip(self.dictionary, last_row):
+                        print(val, "=", key)
+                    input("Press enter to return to the start....")
+                    if (input):
+                        self.abandon_rate_options()
+
+                elif selected_option == 2:
+                    self.clear_terminal()
+                    print("Copy the link below into a new tab. This will display the full spreadsheet with all data.")
+                    print("https://docs.google.com/spreadsheets/d/1IuRuySISMZsv34Ujaw6ERiFJoHikSjU6SIPbojHFTFI/edit?usp=sharing")
+                    input("Press enter to return to the start....")
+                    if (input):
+                        self.abandon_rate_options()
+                elif selected_option == 3:
+                    self.clear_terminal()
+                    self.start_generator()
                 else:
                     print("Oops, you have entered {input} that is an invalid option".format(input=selected_option))
                     print("Please select option '1' or '2'")
-                    continue
-                
+            
             except ValueError:
-                print("Sorry you have entered an invalid input, please select from option '1' or '2'")    
-                
-            # try:
-            #     selected_option = int(input("Choose your option:\n"))
-            #     if selected_option == 1:
-            #         print("i made it here")
-            #         get_most_recent_data = SHEET.worksheet("call_data").get_all_values()
-            #         last_row = get_most_recent_data[-1]
-            #         print(last_row)
-            #         self.clear_terminal()
-            #     elif selected_option == 2:
-            #         print("Copy the link below into a new tab. This will display the full spreadsheet with all data.")
-            #         print("https://docs.google.com/spreadsheets/d/1IuRuySISMZsv34Ujaw6ERiFJoHikSjU6SIPbojHFTFI/edit?usp=sharing")
-            #     elif selected_option == 3:
-            #         self.start_generator()
-            #     else:
-            #         print("Oops, you have entered {input} that is an invalid option".format(input=selected_option))
-            #         print("Please select option '1' or '2'")
-            #         # continue
-            
-            # except ValueError:
-            #     print("Sorry you have entered an invalid input, please select from option '1' or '2'")
-
-    # def display_data(self, data):
-
-            
-    #     print(data)
- 
-
-        
+                print("Sorry you have entered an invalid input, please select from option '1' or '2'")
 
     def get_date(self):
         date = datetime.date.today()
         self.all_input_data.append(str(date))
-        print(date)
-        
-        
+
     def clear_terminal(self):
         os.system('clear')
-        
-
 
