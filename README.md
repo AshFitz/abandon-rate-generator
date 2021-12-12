@@ -89,5 +89,42 @@
 <p> Using gspread saves the users input and allows the user to view the data when requested.
 </p>
 
+## User Testing:
+
+### Testing
+* All testing was validated when each feature was added to confirm the functionality had not changed after a significant piece of code or change was added.
+
+<p> User testing that was conducted during the development of this project:</p>
+
+* As a user who lands on the welcome screen, I would expect to have some indication of the apps use. This test passed. 
+* As a user I would then expect to be provided with some further information and the apps purpose. This test passed.
+* As a user I would expect the app will continue when I press enter. This test passed.
+* As a user I would expect the options would have different functionalities. This test passed.
+* As a user I would expect to be made aware if my inputs were incorrect. This test passed.
+* As a user I would expect to move the next page if my inputs were correct. This tests passed.
+* As a user I would expect my confirmed inputs to post to the spread sheet. This test passed
+* As a user I would then expect to be presented with the abandon rate %. This test passed.
+* As a user when I press enter to return home, I expect to be brought to the home page. This test passed.
+* As a user I would expect to be made aware if my inputs were incorrect, when chosing my next option - option 2. This test passed.
+* As a user I would expect to be provided with the previous abandon rate entry when this option is selected. This test passed.
+* As a user I would expect to be presented with the spreadsheet URL when this option is selected. This test passed.
+* As a user when I press enter to return home, I expect to be brought to the home page. This test passed.
+
+### Pep8 Validator
+* Pep8 validator was user to validate python code.
+
+* ![Pep8 Validator Main File](https://raw.githubusercontent.com/AshFitz/abandon-rate-generator/main/assets/testing/pep8_main_file.JPG)
+
+* ![Pep8 Validator Run File](https://raw.githubusercontent.com/AshFitz/abandon-rate-generator/main/assets/testing/pep8_run_file.JPG)
+
+* ![Pep8 Validator Validations File](https://raw.githubusercontent.com/AshFitz/abandon-rate-generator/main/assets/testing/pep8_validations_file.JPG)
+
+
+
+
+
+
+
+
 
 
