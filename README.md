@@ -213,7 +213,15 @@ pushed to the repository.
 * Add your google credientials to the creds.json file.
 * Ensure the creds.json file is declared in the .gitignore file.
 * Open the terminal.
-* Yype python3 run.py
+* Type python3 run.py
+
+### Acknowledgements
+
+<p> I would to say a big thank you to my mentor Rahul Lakhanpal, for his support and constant feedback throughout developing the website. </p>
+
+<p><strong>This project is for educational purposes only. It was created as a first milestone project for Code Institutes full stack web development course.</strong></p>
+
+
 
 
 
