@@ -67,8 +67,8 @@ class Generator:
         """
         print(
             """
-        The Abandon Rate Generator can be used to track how the call center
-        is performing.\n
+        The Abandon Rate Generator has been created for this call
+        center, to track how the call center's performance.\n
         """
         )
 
@@ -97,9 +97,9 @@ class Generator:
         Provide the user with two options. One option to navigate to
         generate the abandon rate area. The other to navigate to
         view previous abandon rates. Check that 1, 2 is in the option
-        value, if it is, use conditions to determain what is called next
-        handle the value error with an exception to notify user of invalid
-        input.
+        value, if it is, use conditions to determine what is called next
+        and handle the value error with an exception to notify user of
+        invalid input.
         """
         self.clear_terminal()
         print("Enter '1' to generate the abandon rate.")
@@ -123,16 +123,16 @@ class Generator:
                 else:
                     print(
                         "Oops, you have entered {input}"
-                        "that is an invalid option".format(
+                        "that is not a invalid option".format(
                             input=option_value
                         )
                     )
-                    print("Please select option '1' or '2'")
+                    print("Please select option '1' or '2'.")
                     continue
             except ValueError:
                 print(
                     "Sorry you have entered an invalid input,"
-                    "please select from option '1' or '2'"
+                    "please select from option '1' or '2'."
                 )
 
     def get_rep_name(self):
@@ -144,7 +144,7 @@ class Generator:
         I set the input to lower and strip white spacing to ensure
         easier validation.
         The loop will repeatedly request data until the data is valid.
-        when the contition returns true from validating, we proceed with
+        When the contition returns true from validating, we proceed with
         clearing the terminal, update the user of the success, add the
         input to a list, and call the next function.
         """
@@ -172,7 +172,7 @@ class Generator:
         Get the users job title.
         Run a while loop and collect a users input, attempt to validate
         the string of data from the user via the terminal,
-        which must contain only alpha numeric values.
+        which must contain only alpha numeric values. 
         The loop will repeatedly request data until the data is valid.
         when the contition returns true from validating, we proceed with
         clearing the terminal, update the user of the success, add the
@@ -199,12 +199,12 @@ class Generator:
     def get_dept_name(self):
         """
         Get the department name from the user.
-        collect an input from the user, pass the input to the validate_text
-        function the function must only return alphabatical chars,
+        Collect an input from the user, pass the input to the validate_text
+        function. The function must only return alphabatical chars,
         if it returns true, clear terminal, update user with success,
         append the input to the list, and call the next function.
-        If it fails, handle it by outputting to the user their
-        input was invalid and what to do, to fix the issue.
+        If it fails, provide the user with an output to explain their
+        input was invalid and what to enter to fix the issue.
         """
         print("Please provide us with your department name.\n")
         while True:
@@ -227,12 +227,12 @@ class Generator:
     def get_inbound_calls(self):
         """
         Get inbound call figures input from the user via input.
-        pass the input to the validate_numbers function, if it
+        Pass the input to the validate_numbers function, if it
         returns true we proceed by clearing the terminal,
         append the input to the inbound_calls list, notify the
         user their input has worked and call the next function.
-        If it returns false, handle it by outputting to the user
-        their input was invalid and how to fix it.
+        If it fails, provide the user with an output to explain their
+        input was invalid and what to enter to fix the issue.
         """
         print("Please enter the number of inbound calls, e.g.'100'.\n")
         while True:
@@ -245,20 +245,21 @@ class Generator:
                 break
             else:
                 print("You have entered characters,"
-                      "please ensure it is only numbers")
+                      "please ensure to enter numbers only.")
 
     def get_dropped_calls(self):
         """
-        Get dropped call figures input from the user via input,
+        Get dropped call figures input from the user via input.
         Validate the input by passing the validate_numbers function
         the users input, if it returns true, clear the terminal and
         also store the first item in the inbound calls list to a new
-        variable called inbound to check, this then allows us to handle
-        if the dropped calls number is greater than the inbound calls.
-        Handle by letting the user know if it is greater than inbound calls
-        print message to user, reset the inbound_to_check to an empty list.
-        If it passes validation, append to the lists. Notify user of success.
-        Call next func which allows the user to verify their inputs before
+        variable called inbound to check. This then allows us to handle
+        if the number of dropped calls is greater than the inbound calls.
+        This is handled by a print statement, letting the user know the
+        number of inbound calls must be higher than the dropped calls
+        and reset the inbound_to_check to an empty list. If it passes 
+        validation, append to the lists. Notify user of success. Call
+        next func which allows the user to verify their inputs before
         posting to the spreadsheet.
         """
         print("You are nearly there!")
@@ -286,15 +287,15 @@ class Generator:
 
             else:
                 print("You have entered characters,"
-                      "please ensure it is only numbers")
+                      "please ensure to enter numbers only.")
 
     def confirm_user_input(self):
         """
-        Display the user their current inputs as a list
-        if user is happy with their inputs we calculate the abandon rate
+        Display the user their current inputs as a list. If the
+        user is happy with their inputs, we calculate the abandon rate.
         Run a forloop on the dict that hold the keys, and also the
         to check list, and print them together for ease of viewing.
-        if not return to the start to try again. Handle any exeptions.
+        If not return user to the start to try again. Handle any exeptions.
         """
         print(
             "Before we calculate the percentage we want to check"
@@ -304,7 +305,9 @@ class Generator:
 
         for val, key in zip(self.dictionary, to_check):
             print(val, "=", key)
-        print("\nIf this information is correct type 'y' otherwise type 'n'")
+        print("\nIf the information is correct type 'y', or"
+              " if the information is incorrect type 'n' to"
+              "start again.")
 
         option_input = ""
         while option_input not in ["y", "n"]:
@@ -324,22 +327,20 @@ class Generator:
                             input=option_input
                         )
                     )
-                    print("Please select option 'y' or 'n'")
+                    print("Please select option 'y' or 'n'.")
 
             except ValueError:
                 print(
                     "Sorry you have entered an invalid input, please select"
-                    "from option 'y' or 'n'"
+                    "from option 'y' or 'n'."
                 )
 
     def calculate_abandon_rate(self):
         """
-        Calculate the abandon rate by dividing the dropped number of calls by
+        Calculate the abandon rate by dividing the number of dropped calls by
         the total number of inbound calls and multiplying the result by 100.
-        Implement the format method which returns the devided calls as a string
-        with only 1 floating point number, check conditions if
-        its below a number notify the user of the condition
-        all the user to continue by pressint enter.
+        Implement the format method which returns the divided calls as a string
+        with only 1 floating point number. Check and handle condition.
         """
         dropped_calls_to_calc = int(self.dropped_calls[0])
         inbound_calls_to_calc = int(self.inbound_calls[0])
@@ -348,11 +349,13 @@ class Generator:
         self.all_input_data.append(percentage + "%")
         self.update_call_worksheet(self.all_input_data)
 
+        print("We aim to have an abandon rate below 5%.")
+        
         if divided_calls < 5:
             print(
                 """
             ----------------------------------------
-            Your abandon rate is {percentage}% that is great
+            Your abandon rate is {percentage}% :)
             ----------------------------------------
             """.format(
                     percentage=percentage
@@ -363,7 +366,7 @@ class Generator:
                 self.start_generator()
         elif divided_calls >= 5:
             print(
-                "Your abandon rate is {percentage}% that is high".format(
+                "Your abandon rate is {percentage}% :(".format(
                     percentage=percentage
                 )
             )
@@ -373,11 +376,11 @@ class Generator:
 
     def update_call_worksheet(self, data):
         """
-        Update call worksheet takes one parameter,
-        specify the worksheet name, update a new
-        row with the data thats has been passed as arguement.
-        Update the user with a print statement to say its updating.
-        and when it was successful.
+        Update call worksheet, this takes one parameter.
+        Specify the worksheet name, update a new row with
+        the data that has been passed as arguement. Update
+        the user with a print statement to say its updating
+        and when the update was successful.
         """
         print("Updating call worksheet.....\n")
         call_worksheet = SHEET.worksheet("call_data")
@@ -386,14 +389,14 @@ class Generator:
 
     def get_call_sheet(self):
         """
-        function to allow the user to choose between,
-        getting the most recent submission to the sheet,
-        view the full spreadsheet if necessary or if they
+        Allows the user to choose between, viewing the 
+        most recent submission to the sheet,view the
+        full spreadsheet if necessary or if they
         dont want any of these options to return home.
         """
         print("Enter '1' to view the most recent abandon rate submission.")
         print("Or")
-        print("Enter '2' to view the full spreadsheet.\n")
+        print("Enter '2' to view the full spreadsheet.")
         print("Enter '3' to return home.\n")
 
         selected_option = ""
@@ -432,18 +435,18 @@ class Generator:
                         "Oops, you have entered {input} that"
                         "is an invalid option".format(input=selected_option)
                     )
-                    print("Please select option '1' or '2'")
+                    print("Please select option '1' or '2'.")
 
             except ValueError:
                 print(
                     "Sorry you have entered an invalid input,"
-                    "please select from option '1' or '2'"
+                    "please select from option '1' or '2'."
                 )
 
     def get_date(self):
         """
-        Function that gets the current date
-        today, so we can keep track of the dates
+        Function that retreives the current date,
+        so we can keep track of the dates
         the user has inputted their information.
         """
         date = datetime.date.today()
