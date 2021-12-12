@@ -202,7 +202,9 @@ class Generator:
         collect an input from the user, pass the input to the validate_text
         function the function must only return alphabatical chars,
         if it returns true, clear terminal, update user with success,
-        append the input to the list, and call the next function
+        append the input to the list, and call the next function.
+        If it fails, handle it by outputting to the user their
+        input was invalid and what to do, to fix the issue.
         """
         print("Please provide us with your department name.\n")
         while True:
@@ -224,10 +226,13 @@ class Generator:
 
     def get_inbound_calls(self):
         """
-        Get inbound call figures input from the user.
-        Run a while loop to collect a valid string of data from the user
-        via the terminal, which must be a string with 1 number. The loop
-        will repeatedly request data until the data is valid.
+        Get inbound call figures input from the user via input.
+        pass the input to the validate_numbers function, if it
+        returns true we proceed by clearing the terminal,
+        append the input to the inbound_calls list, notify the
+        user their input has worked and call the next function.
+        If it returns false, handle it by outputting to the user
+        their input was invalid and how to fix it.
         """
         print("Please enter the number of inbound calls, e.g.'100'.\n")
         while True:
@@ -244,10 +249,17 @@ class Generator:
 
     def get_dropped_calls(self):
         """
-        Get dropped call figures input from the user.
-        Run a while loop to collect a valid string of data from the user
-        via the terminal, which must be a string with 1 number. The loop
-        will repeatedly request data until the data is valid.
+        Get dropped call figures input from the user via input,
+        Validate the input by passing the validate_numbers function
+        the users input, if it returns true, clear the terminal and
+        also store the first item in the inbound calls list to a new
+        variable called inbound to check, this then allows us to handle
+        if the dropped calls number is greater than the inbound calls.
+        Handle by letting the user know if it is greater than inbound calls
+        print message to user, reset the inbound_to_check to an empty list.
+        If it passes validation, append to the lists. Notify user of success.
+        Call next func which allows the user to verify their inputs before 
+        posting to the spreadsheet.
         """
         print("You are nearly there!")
         print("Please enter the number of dropped calls, e.g.'5'.\n")
@@ -279,8 +291,10 @@ class Generator:
     def confirm_user_input(self):
         """
         Display the user their current inputs as a list
-        if user is happy calculate the abandon rate
-        if not return to the start to try again.
+        if user is happy with their inputs we calculate the abandon rate
+        Run a forloop on the dict that hold the keys, and also the
+        to check list, and print them together for ease of viewing.
+        if not return to the start to try again. Handle any exeptions.
         """
         print(
             "Before we calculate the percentage we want to check"
