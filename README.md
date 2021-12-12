@@ -128,8 +128,9 @@
 <p>Issues validating text and numbers. When starting this app I never really handled a user input properly before, or even to a point where we only accept a specific input. At first I was accepting any data and not validating the text correctly. You could input any char, spaces, special characters etc. This would have been a major bug if these chars were accepted to the spreadsheet. A simple and elegant solution to this was adding the isalpha() method and the .isspace(), this ensured only alphabetical chars were accepted and you could also leave in a space if you had a double barreled name.
 </p>
 
-## Deployment
-<p>This app was deployed using Heroku.</p>
+## Deployment Steps
+
+### Heroku Deployment
 
 * Go to the [Heroku](https://id.heroku.com/login) site.
 * Log in.
@@ -152,6 +153,67 @@ your app.
 pushed to the repository.
 * If you select manual deploys, Heroku will allow you to build a new version of your app whenever you click manual deploy.
 * You will then see a message off "App was successfully deployed" and a button to take you to your deployed link.
+
+### This project uses Google spreadsheet
+
+<p>To activate the Google API credential follow these steps:</p>
+
+* Go to the google cloud website [Google Cloud](https://cloud.google.com) 
+* Sign in or login.
+* Click new project.
+* Add project name.
+* Navigate on the left panel to API and services.
+* Click library.
+* Enable google drive API
+* Enable google spread sheets API.
+* Click in create credentials and fill out the form.
+* Service account Id must be copied from your table on google spreadsheets share option.
+* Click the application button.
+* Select I am not using them from computer engine, App engine or cloud platform.
+* Click the next and the done button.
+* Go to the APIs and services, click credential.
+* Click the service account and keys tab.
+* Click on the Add key and select Create New Key.
+* Select JSON and the click create.
+* It will promt a download json file, this has all your credientals.
+
+
+#### To run this application locally follow these steps:
+
+* Clone the repository by clicking code on this page and download as zip.
+* Extract contents to your desired location.
+* Open the folder in your IDE.
+* Create a creds.json file.
+* Add your google worksheet credentials to this see above on how to retrieve them.
+* It should look similar to this, with your own private keys.
+
+```
+{
+  "type": "service_account",
+  "project_id": "",
+  "private_key_id": "",
+  "private_key": "",
+  "client_email": "",
+  "client_id": "",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": ""
+}
+```
+* Also ensure this file is listed in the .gitignore file so nobody gets your credentials.
+* Next you want to open a terminal and type python3 run.py.
+
+
+#### To run this application locally follow these steps:
+
+* Ensure you have the gitpod google extension added.
+* Click the gitpod button on this page.
+* Let the environment spin up and load (this will take a few minutes).
+* Add your google credientials to the creds.json file.
+* Ensure the creds.json file is declared in the .gitignore file.
+* Open the terminal.
+* Yype python3 run.py
 
 
 
