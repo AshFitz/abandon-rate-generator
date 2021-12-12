@@ -1,9 +1,11 @@
 from generator.validate import Generator
 
+
 class Main:
     """
     Constructor for class main.
     """
+
     def __init__(self):
         self.page = Generator()
 
