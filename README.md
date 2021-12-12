@@ -74,4 +74,20 @@
 * I would like to provide the user with an input to provide the number of agents working during the times the inbound calls were recieved. When the data is analysed it may come to light they may have needed more staff which caused a hih abandon rate of calls. Over time the call center will have the data to forcast how busy it will be on certain days at certain times. The agent input will allow the call center to forcast how many agents they may need at those times to reduce the abandon rate. In turn this will help increase the overall performance of the call center.
 * I would like to use a data base instead of a spreadsheet.
 
+## Language Used
+* Python 3.0
+
+## Modules & API's Used
+* OS
+<p> This module allowed me to create and use a clear terminal function. This removed all previous input by the user and outputs by the generator. This helps the readability and flow.</p>
+
+* Time
+<p> This module allowed me to retrieve the current date, append it to the list and then post it to the spreadsheet. Using this allows the user to clearly see the date of the abandon rate entries when viewing previous abandon rates.
+</p>
+
+* Gspread
+<p> Using gspread saves the users input and allows the user to view the data when requested.
+</p>
+
+
 
