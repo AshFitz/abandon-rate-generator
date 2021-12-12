@@ -1,4 +1,4 @@
-from generator.validate import Generator
+from generator.call_generator import Generator
 
 
 class Main:
