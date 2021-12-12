@@ -18,7 +18,8 @@ SHEET = GSPREAD_CLIENT.open("call_data")
 
 class Generator:
     """
-    Constructor to initalize locally scoped lists.
+    Constructor to initalize locally scoped lists in
+    current instance.
     """
 
     def __init__(self):
@@ -35,6 +36,11 @@ class Generator:
         ]
 
     def start_generator(self):
+        """
+        Start generator is called and used to
+        display print statements to the user.
+        """
+
         print(
             """
         ------------------------------------
@@ -56,8 +62,8 @@ class Generator:
 
     def description(self):
         """
-        Describe the generator functionality. Explain the meaning
-        of abandon rate.
+        Describes the generator functionality. Explain the meaning
+        of abandon rate to the user.
         """
         print(
             """
@@ -88,11 +94,12 @@ class Generator:
 
     def abandon_rate_options(self):
         """
-        Provide the user with two options. One option to generate the abandon
-        rate by inputting recent call data or the other option to view
-        recent abandon rates generated. Run a while loop to to check the users
-        input. If True, the try block runs and the selected option is executed.
-        If False handle the exception.
+        Provide the user with two options. One option to navigate to
+        generate the abandon rate area. The other to navigate to
+        view previous abandon rates. Check that 1, 2 is in the option
+        value, if it is, use conditions to determain what is called next
+        handle the value error with an exception to notify user of invalid
+        input.
         """
         self.clear_terminal()
         print("Enter '1' to generate the abandon rate.")
@@ -132,8 +139,14 @@ class Generator:
         """
         Get the representative's name from the user.
         Run a while loop to collect a valid string of data from the user
-        via the terminal, which must contain only alpha numeric values.
+        via the terminal, is passed to the validate_text function, this
+        then checks if the string is valid using built in methods,
+        I set the input to lower and strip white spacing to ensure
+        easier validation.
         The loop will repeatedly request data until the data is valid.
+        when the contition returns true from validating, we proceed with
+        clearing the terminal, update the user of the success, add the
+        input to a list, and call the next function.
         """
         print("Please provide us with your name.\n")
         self.get_date()
@@ -156,10 +169,14 @@ class Generator:
 
     def get_job_title(self):
         """
-        Get the uses job title.
-        Run a while loop to collect a valid string of data from the user
-        via the terminal, which must contain only alpha numeric values.
+        Get the users job title.
+        Run a while loop and collect a users input, attempt to validate
+        the string of data from the user via the terminal,
+        which must contain only alpha numeric values.
         The loop will repeatedly request data until the data is valid.
+        when the contition returns true from validating, we proceed with
+        clearing the terminal, update the user of the success, add the
+        input to a list, and call the next function.
         """
         print("Please provide us with your job title.\n")
 
@@ -182,9 +199,10 @@ class Generator:
     def get_dept_name(self):
         """
         Get the department name from the user.
-        Run a while loop to collect a valid string of data from the user
-        via the terminal, which must contain only alpha numeric values.
-        The loop will repeatedly request data until the data is valid.
+        collect an input from the user, pass the input to the validate_text
+        function the function must only return alphabatical chars,
+        if it returns true, clear terminal, update user with success,
+        append the input to the list, and call the next function
         """
         print("Please provide us with your department name.\n")
         while True:
