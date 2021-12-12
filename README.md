@@ -128,6 +128,34 @@
 <p>Issues validating text and numbers. When starting this app I never really handled a user input properly before, or even to a point where we only accept a specific input. At first I was accepting any data and not validating the text correctly. You could input any char, spaces, special characters etc. This would have been a major bug if these chars were accepted to the spreadsheet. A simple and elegant solution to this was adding the isalpha() method and the .isspace(), this ensured only alphabetical chars were accepted and you could also leave in a space if you had a double barreled name.
 </p>
 
+## Deployment
+<p>This app was deployed using Heroku.</p>
+
+* Go to the [Heroku](https://id.heroku.com/login) site.
+* Log in.
+* Click the "New" button and click "Creat new app"
+* Provide a name for the app in the "App name" field.
+* Select your region from the dropdown menu.
+* Click "Create App".
+* Then proceed to the settings tab.
+* Click "config vars".
+* Enter a KEY of PORT and it's value of 8000. The click "add".
+* Enter a KEY of CREDS. Go to workspace and copy the entire creds.json file and copy this into the value.
+* Next click "Add buildpack".
+* The python buildpack needs to be added first followed by the nodejs buildpack.
+* After the buildpacks been added, proceed to the deploy tab.
+* In the deploy tab, select GitHub as the deployment method and connect your GitHub profile.
+* Search for the repository name you want to deploy to Heroku and click "connect".
+* When your repository is connected to Heroku you can then choose to either manually or automatically deploy
+your app.
+* If you select automatic deploys, Heroku will build a new version of the app each time a change has been
+pushed to the repository.
+* If you select manual deploys, Heroku will allow you to build a new version of your app whenever you click manual deploy.
+* You will then see a message off "App was successfully deployed" and a button to take you to your deployed link.
+
+
+
+
 
 
 
