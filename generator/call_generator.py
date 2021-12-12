@@ -317,6 +317,9 @@ class Generator:
                     self.clear_terminal()
                     self.calculate_abandon_rate()
                 elif option_input == "n":
+                    self.all_input_data = []
+                    self.dropped_calls = []
+                    self.inbound_calls = []
                     self.clear_terminal()
                     self.start_generator()
                 else:
